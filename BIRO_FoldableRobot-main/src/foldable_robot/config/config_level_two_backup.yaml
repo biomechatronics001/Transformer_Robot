@@ -1,0 +1,49 @@
+# Publish all joint states -----------------------------------
+joint_state_controller:
+  type: joint_state_controller/JointStateController
+  publish_rate: 50
+
+# Position Controllers ---------------------------------------
+joint11_position_controller:
+  type: "position_controllers/JointPositionController"
+  joint: joint11
+
+joint12_position_controller:
+  type: "position_controllers/JointPositionController"
+  joint: joint12
+
+joint13_position_controller:
+  type: "position_controllers/JointPositionController"
+  joint: joint13
+
+joint14_position_controller:
+  type: "position_controllers/JointPositionController"
+  joint: joint14
+
+joint18_position_controller:
+  type: "position_controllers/JointPositionController"
+  joint: joint18
+
+gazebo_ros_control/pid_gains:
+  joint11: {p: 1, i:  1, d:  0.1}
+  joint12: {p: 20, i:   0.5, d: 0.5}
+  joint13: {p: 1, i: 0, d: 0.1}
+  joint14: {p: 1, i: 0, d: 0}
+  joint18: {p: 20, i:  0.5, d: 0.5}
+
+joint_limits:
+  joint11:
+    has_velocity_limits: true
+    max_velocity: 0.5
+  joint12:
+    has_velocity_limits: true
+    max_velocity: 0.5
+  joint13:
+    has_velocity_limits: true
+    max_velocity: 0.5
+  joint14:
+    has_velocity_limits: true
+    max_velocity: 0.5
+  joint18:
+    has_velocity_limits: true
+    max_velocity: 0.5

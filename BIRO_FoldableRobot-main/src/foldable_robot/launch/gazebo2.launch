@@ -1,0 +1,16 @@
+<?xml	version="1.0" encoding="UTF-8"?>
+<launch>
+        <include file="$(find gazebo_ros)/launch/empty_world.launch"/>
+        <param name="foldable_robot" command="cat $(find foldable_robot)/urdf/two_cubes.urdf" />
+        <arg name = "x" default = "0" />
+        <arg name = "y" default = "0" />
+        <arg name = "z" default = "1.5" />
+        
+       <node name = "my_robot_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
+      	     args = "-urdf -param foldable_robot -model foldable_robot -x $(arg x) -y $(arg y) -z $(arg z)" />
+        <!--
+        <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+	<node name="state_publisher" pkg="foldable_robot" type="state_publisher" />
+	# Commented out, not working as of 1/05/21. Will fix tomorrow
+	-->
+</launch>

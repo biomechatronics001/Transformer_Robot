@@ -1,0 +1,368 @@
+<!--======== Cube 3 =========-->
+<link name="cube3">
+  <pose> 0 0 0 0 0 0</pose>
+
+  <inertial>
+    <mass value = "0.1" />
+    <origin rpy = "0 0 0" xyz = "0 -0.025 -0.025"/>
+    <inertia ixx = "0.0000416667" ixy = "0" ixz = "0" iyy = "0.0000416667" iyz = "0" izz = "0.0000416667" />
+  </inertial>
+
+  <visual>
+    <origin rpy = "0 0 0" xyz = "0 -0.025 -0.025"/>
+    <geometry>
+      <box size = "0.05 0.05 0.05"/>
+    </geometry>
+    <material name = "red"/>
+  </visual>
+
+  <collision>
+    <origin rpy = "0 0 0" xyz = "0 -0.025 -0.025"/>
+    <geometry>
+      <box size = "0.05 0.05 0.05"/>
+    </geometry>
+  </collision>
+</link>
+
+<gazebo reference="cube3">
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <material>Gazebo/Orange</material>
+</gazebo>
+
+<!--======== Cube 4 =========-->
+<link name="cube4">
+  <pose> 0 0 0 0 0 0</pose>
+
+  <inertial>
+    <mass value = "0.1" />
+    <origin rpy = "0 0 0" xyz = "-0.025 -0.025 0"/>
+    <inertia ixx = "0.0000416667" ixy = "0" ixz = "0" iyy = "0.0000416667" iyz = "0" izz = "0.0000416667" />
+  </inertial>
+
+  <visual>
+    <origin rpy = "0 0 0" xyz = "-0.025 -0.025 0"/>
+    <geometry>
+      <box size = "0.05 0.05 0.05"/>
+    </geometry>
+    <material name = "blue"/>
+  </visual>
+
+  <collision>
+    <origin rpy = "0 0 0" xyz = "-0.025 -0.025 0"/>
+    <geometry>
+      <box size = "0.05 0.05 0.05"/>
+    </geometry>
+  </collision>
+</link>
+
+<gazebo reference="cube4">
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <material>Gazebo/Blue</material>
+</gazebo>
+
+<!--======== Cube 5 =========-->
+<link name="cube5">
+  <pose> 0 0 0 0 0 0</pose>
+
+  <inertial>
+    <mass value = "0.1" />
+    <origin rpy = "0 0 0" xyz = "0 -0.025 -0.025"/>
+    <inertia ixx = "0.0000416667" ixy = "0" ixz = "0" iyy = "0.0000416667" iyz = "0" izz = "0.0000416667" />
+  </inertial>
+
+  <visual>
+    <origin rpy = "0 0 0" xyz = "0 -0.025 -0.025"/>
+    <geometry>
+      <box size = "0.05 0.05 0.05"/>
+    </geometry>
+    <material name = "red"/>
+  </visual>
+
+  <collision>
+    <origin rpy = "0 0 0" xyz = "0 -0.025 -0.025"/>
+    <geometry>
+      <box size = "0.05 0.05 0.05"/>
+    </geometry>
+  </collision>
+</link>
+
+<gazebo reference="cube5">
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <material>Gazebo/Orange</material>
+</gazebo>
+
+<!--======== Cube 6 =========-->
+<link name="cube6">
+  <pose> 0 0 0 0 0 0</pose>
+
+  <inertial>
+    <mass value = "0.1" />
+    <origin rpy = "0 0 0" xyz = "-0.025 0 -0.025"/>
+    <inertia ixx = "0.0000416667" ixy = "0" ixz = "0" iyy = "0.0000416667" iyz = "0" izz = "0.0000416667" />
+  </inertial>
+
+  <visual>
+    <origin rpy = "0 0 0" xyz = "-0.025 0 -0.025"/>
+    <geometry>
+      <box size = "0.05 0.05 0.05"/>
+    </geometry>
+    <material name = "blue"/>
+  </visual>
+
+  <collision>
+    <origin rpy = "0 0 0" xyz = "-0.025 0 -0.025"/>
+    <geometry>
+      <box size = "0.05 0.05 0.05"/>
+    </geometry>
+  </collision>
+</link>
+
+<gazebo reference="cube6">
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <material>Gazebo/Blue</material>
+</gazebo>
+
+<!--======== Cube 7 =========-->
+<link name="cube7">
+  <pose> 0 0 0 0 0 0</pose>
+
+  <inertial>
+    <mass value = "0.1" />
+    <origin rpy = "0 0 0" xyz = "0 0.025 0.025"/>
+    <inertia ixx = "0.0000416667" ixy = "0" ixz = "0" iyy = "0.0000416667" iyz = "0" izz = "0.0000416667" />
+  </inertial>
+
+  <visual>
+    <origin rpy = "0 0 0" xyz = "0 0.025 0.025"/>
+    <geometry>
+      <box size = "0.05 0.05 0.05"/>
+    </geometry>
+    <material name = "red"/>
+  </visual>
+
+  <collision>
+    <origin rpy = "0 0 0" xyz = "0 0.025 0.025"/>
+    <geometry>
+      <box size = "0.05 0.05 0.05"/>
+    </geometry>
+  </collision>
+</link>
+
+<gazebo reference="cube7">
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <material>Gazebo/Orange</material>
+</gazebo>
+
+<!--======== Cube 8 =========-->
+<link name="cube8">
+  <pose> 0 0 0 0 0 0</pose>
+
+  <inertial>
+    <mass value = "0.1" />
+    <origin rpy = "0 0 0" xyz = "-0.025 0.025 0"/>
+    <inertia ixx = "0.0000416667" ixy = "0" ixz = "0" iyy = "0.0000416667" iyz = "0" izz = "0.0000416667" />
+  </inertial>
+
+  <visual>
+    <origin rpy = "0 0 0" xyz = "-0.025 0.025 0"/>
+    <geometry>
+      <box size = "0.05 0.05 0.05"/>
+    </geometry>
+    <material name="blue"/>
+  </visual>
+
+  <collision>
+    <origin rpy = "0 0 0" xyz = "-0.025 0.025 0"/>
+    <geometry>
+      <box size = "0.05 0.05 0.05"/>
+    </geometry>
+  </collision>
+</link>
+
+<gazebo reference="cube8">
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <material>Gazebo/Blue</material>
+</gazebo>
+
+<!--========== Joints and Transmissions ===========-->
+
+<!--======== Joint 2 =========-->
+<joint name="joint2" type="revolute">
+  <parent link="cube2"/>
+  <child link="cube3"/>
+  <origin xyz="-0.025 -0.025 0.05" rpy="0 0 0" />
+  <axis xyz="1 0 0" />
+  <limit effort="2.0" lower="-3.14" upper="0" velocity="0.314"/>
+  <dynamics damping ="0.1"/>
+</joint>
+
+<transmission name="secondJoint">
+  <type>transmission_interface/SimpleTransmission</type>
+
+  <actuator name="motor2">
+    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+
+  <joint name="joint2">
+    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+  </joint>
+</transmission>
+
+<!--======== Joint 3 =========-->
+<joint name="joint3" type="revolute">
+  <parent link="cube3"/>
+  <child link="cube4"/>
+  <origin xyz="0.025 -0.05 -0.025" rpy="0 0 0" />
+  <axis xyz="0 0 1" />
+  <limit effort="2.0" lower="0.0" upper="3.141592" velocity="0.314"/>
+  <dynamics damping ="0.1"/>
+</joint>
+
+<transmission name="thirdJoint">
+  <type>transmission_interface/SimpleTransmission</type>
+
+  <actuator name="motor3">
+    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+
+  <joint name="joint3">
+    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+  </joint>
+</transmission>
+
+<!--======== Joint 4 =========-->
+<joint name="joint4" type="revolute">
+  <parent link="cube4"/>
+  <child link="cube5"/>
+  <origin xyz="-0.025 -0.05 0.025" rpy="0 0 0" />
+  <axis xyz="1 0 0" />
+  <limit effort="2.0" lower="-3.141592" upper="0.0" velocity="0.314"/>
+  <dynamics damping ="0.1"/>
+</joint>
+
+<transmission name="fourthJoint">
+  <type>transmission_interface/SimpleTransmission</type>
+
+  <actuator name="motor4">
+    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+
+  <joint name="joint4">
+    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+  </joint>
+</transmission>
+
+<!--======== Joint 5 =========-->
+<joint name="joint5" type="revolute">
+  <parent link="cube5"/>
+  <child link="cube6"/>
+  <origin xyz="0.025 -0.025 -0.05" rpy="0 0 0" />
+  <axis xyz="0 1 0" />
+  <limit effort="2.0" lower="-3.141592" upper="0.0" velocity="0.314"/>
+  <dynamics damping ="0.1"/>
+</joint>
+
+<transmission name="fifthJoint">
+  <type>transmission_interface/SimpleTransmission</type>
+
+  <actuator name="motor5">
+    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+
+  <joint name="joint5">
+    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+  </joint>
+</transmission>
+
+<!--======== Joint 6 =========-->
+<joint name="joint6" type="revolute">
+  <parent link="cube6"/>
+  <child link="cube7"/>
+  <origin xyz="-0.025 0.025 -0.05" rpy="0 0 0" />
+  <axis xyz="1 0 0" />
+  <limit effort="2.0" lower="-3.141592" upper="0.0" velocity="0.314"/>
+  <dynamics damping ="0.1"/>
+</joint>
+
+<transmission name="sixthJoint">
+  <type>transmission_interface/SimpleTransmission</type>
+
+  <actuator name="motor6">
+    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+
+  <joint name="joint6">
+    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+  </joint>
+</transmission>
+
+<!--======== Joint 7 =========-->
+<joint name="joint7" type="revolute">
+  <parent link="cube7"/>
+  <child link="cube8"/>
+  <origin xyz="0.025 0.05 0.025" rpy="0 0 0" />
+  <axis xyz="0 0 1" />
+  <limit effort="2.0" lower="-3.141592" upper="0.0" velocity="0.314"/>
+  <dynamics damping ="0.1"/>
+</joint>
+
+<transmission name="seventhJoint">
+  <type>transmission_interface/SimpleTransmission</type>
+
+  <actuator name="motor7">
+    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+
+  <joint name="joint7">
+    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+  </joint>
+</transmission>
+
+<!--======== Joint 8 (Gazebo) =========-->
+<gazebo>
+  <joint name="joint8" type="revolute">
+    <pose relative_to='cube1'>0.025 -0.025 0 0 -0 0</pose>
+    <parent>cube8</parent>
+    <child>cube1</child>
+    <axis>
+      <xyz>0 0 1</xyz>
+    </axis>
+    <limit>
+      <lower>0</lower>
+      <upper>3.141592</upper>
+      <effort>2.0</effort>
+      <velocity>0.314</velocity>
+    </limit>
+    <dynamics>
+      <damping>0.1</damping>
+      <friction>0</friction>
+      <spring_reference>0</spring_reference>
+      <spring_stiffness>0</spring_stiffness>
+    </dynamics>
+  </joint>
+</gazebo>
+
+<transmission name="eighthJoint">
+  <type>transmission_interface/SimpleTransmission</type>
+
+  <actuator name="motor8">
+    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+
+  <joint name="joint8">
+    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+  </joint>
+</transmission>

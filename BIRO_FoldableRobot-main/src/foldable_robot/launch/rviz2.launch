@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<launch>
+        <!--
+        <param name="robot_description" command="$(find xacro)/xacro -/-inorder '$(find foldable_robot)/urdf/two_cubes.urdf'" />
+
+        <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+            <param name="use_gui" value="TRUE"/>
+        </node>
+        <node if="$(arg gui)" name="joint_state_publisher" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
+        ==
+        <node if="$(arg gui)" name="joint_state_publisher" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
+    <node unless="$(arg gui)" name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+        ==
+        <node if="$(arg gui)" name="joint_state_publisher" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
+        <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+
+        <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find foldable_robot)/rviz/two_cubes.rviz" />
+	-->
+
+	<arg name="model" default="$(find foldable_robot)/urdf/two_cubes.urdf"/>
+	<arg name="gui" default="true" />
+	<arg name="rvizconfig" default="$(find foldable_robot)/rviz/two_cubes.rviz" />
+
+	<param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
+	<node name="joint_state_publisher" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui">
+		<rosparam param ="source_list" > ["jointStates"] </rosparam>
+		<rosparam file="$(find foldable_robot)/config/zeros.yaml"/>
+		<param name="use_gui" value="$(arg gui)"/>
+	</node>
+
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
+</launch>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+      <arg name="paused" value="false"/>
+      <arg name="use_sim_time" value="true"/>
+      <arg name="gui" value="true"/>
+      <arg name="recording" value="false"/>
+      <arg name="debug" value="false"/>
+  </include>
+
+  <arg name="model" default="$(find foldable_robot)/urdf/level_two.urdf"/>
+  <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg model)" />
+
+  <param name="foldable_robot" command="cat $(find foldable_robot)/urdf/level_two.urdf" />
+  <node name = "my_robot_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
+        args = "-urdf -param foldable_robot -model foldable_robot -x 0 -y 0 -z 0.025" />
+
+  <!--
+  <node name = "my_robot_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
+        args = "-urdf -param foldable_robot -model foldable_robot -x 0 -y 0 -z 0.025" />
+
+  <node name = "my_robot_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
+        args = "-urdf -param foldable_robot -model foldable_robot -x 0 -y 0 -z 0.5" />
+  -->
+
+  <rosparam file="$(find foldable_robot)/config/config_level_two.yaml" command="load"/>
+
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+   output = "screen" args="joint_state_controller
+                           joint11_position_controller
+                           joint16_position_controller
+                           joint17_position_controller
+                           joint18_position_controller
+                           joint21_position_controller
+                           joint22_position_controller
+                           joint26_position_controller
+                           joint27_position_controller
+                           joint28_position_controller
+                           joint31_position_controller
+                           joint32_position_controller
+                           joint33_position_controller
+                           joint36_position_controller
+                           joint38_position_controller
+                           joint41_position_controller
+                           joint43_position_controller
+                           joint46_position_controller
+                           joint48_position_controller
+                           bottom11_position_controller
+                           bottom11prime_position_controller
+                           top21_position_controller
+                           top21prime_position_controller"/>
+
+  <!--
+  <node pkg="foldable_robot" type="keyboard_input.py" name="keyboard_input" output="screen"> </node>
+  <node pkg="foldable_robot" type="keyboard_interpreter.py" name="keyboard_interpreter" output="screen"> </node>
+  -->
+</launch>

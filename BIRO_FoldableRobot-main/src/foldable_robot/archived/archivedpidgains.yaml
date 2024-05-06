@@ -1,0 +1,32 @@
+# Mitigates sharp movement, undergoes all configs with no issues. Small vibrations present at effort = 1.5
+gazebo_ros_control/pid_gains:
+  joint1: {p: 10, i:   5, d:  0.10}
+  joint2: {p: 10, i:   1, d:  0.01}
+  joint3: {p: 10, i:   1, d:  0.1}
+  joint4: {p: 3500, i: 2, d:  0.10}
+  joint5: {p: 1000, i:   2, d:  0.80}
+  joint6: {p: 500, i:   1, d:  0.85}
+  joint7: {p: 1500, i:   1, d:  0.8}
+  joint8: {p:  3, i: 0.1, d:  0.20}
+
+# Reset configuration
+gazebo_ros_control/pid_gains:
+  joint1: {p: 1, i:   0, d:  0}
+  joint2: {p: 1, i:   0, d:  0}
+  joint3: {p: 1, i:   0, d:  0}
+  joint4: {p: 1, i:   0, d:  0}
+  joint5: {p: 1, i:   0, d:  0}
+  joint6: {p: 1, i:   0, d:  0}
+  joint7: {p: 1, i:   0, d:  0}
+  joint8: {p: 1, i:   0, d:  0}
+
+# ? Needed tuning, saving as backup
+gazebo_ros_control/pid_gains:
+  joint1: {p: 15, i:  1, d:  0.8}
+  joint2: {p: 2, i:   0.1, d: 0.1}
+  joint3: {p: 500, i: 0.1, d: 1.5}
+  joint4: {p: 500, i:   1, d:  0.1}
+  joint5: {p: 1000, i:   0.1, d:  0.15}
+  joint6: {p: 50, i:   0.1, d:  0.25}
+  joint7: {p: 500, i:   0.1, d:  0.05}
+  joint8: {p: 1, i:   0.1, d:  0.01}

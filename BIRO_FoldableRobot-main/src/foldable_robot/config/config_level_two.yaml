@@ -1,0 +1,185 @@
+# Publish all joint states -----------------------------------
+joint_state_controller:
+  type: joint_state_controller/JointStateController
+  publish_rate: 50
+
+# Position Controllers ---------------------------------------
+joint11_position_controller:
+  type: "position_controllers/JointPositionController"
+  joint: joint11
+
+joint16_position_controller:
+  type: "position_controllers/JointPositionController"
+  joint: joint16
+
+joint17_position_controller:
+  type: "position_controllers/JointPositionController"
+  joint: joint17
+
+joint18_position_controller:
+  type: "position_controllers/JointPositionController"
+  joint: joint18
+
+joint21_position_controller:
+  type: "position_controllers/JointPositionController"
+  joint: joint21
+
+joint22_position_controller:
+  type: "position_controllers/JointPositionController"
+  joint: joint22
+
+joint26_position_controller:
+  type: "position_controllers/JointPositionController"
+  joint: joint26
+
+joint27_position_controller:
+  type: "position_controllers/JointPositionController"
+  joint: joint27
+
+joint28_position_controller:
+  type: "position_controllers/JointPositionController"
+  joint: joint28
+
+joint31_position_controller:
+  type: "position_controllers/JointPositionController"
+  joint: joint31
+
+joint32_position_controller:
+  type: "position_controllers/JointPositionController"
+  joint: joint32
+
+joint33_position_controller:
+  type: "position_controllers/JointPositionController"
+  joint: joint33
+
+joint36_position_controller:
+  type: "position_controllers/JointPositionController"
+  joint: joint36
+
+joint38_position_controller:
+  type: "position_controllers/JointPositionController"
+  joint: joint38
+
+joint41_position_controller:
+  type: "position_controllers/JointPositionController"
+  joint: joint41
+
+joint43_position_controller:
+  type: "position_controllers/JointPositionController"
+  joint: joint43
+
+joint46_position_controller:
+  type: "position_controllers/JointPositionController"
+  joint: joint46
+
+joint48_position_controller:
+  type: "position_controllers/JointPositionController"
+  joint: joint48
+
+bottom11_position_controller:
+  type: "position_controllers/JointPositionController"
+  joint: bottom11
+
+bottom11prime_position_controller:
+    type: "position_controllers/JointPositionController"
+    joint: bottom11prime
+
+top21_position_controller:
+  type: "position_controllers/JointPositionController"
+  joint: top21
+
+top21prime_position_controller:
+    type: "position_controllers/JointPositionController"
+    joint: top21prime
+
+gazebo_ros_control/pid_gains:
+  joint11: {p: 50, i: 0.1, d: 0.01}
+  joint16: {p: 50, i: 0.1, d: 0.01}
+  joint17: {p: 50, i: 0.1, d: 0.01}
+  joint18: {p: 50, i: 0.1, d: 0.01}
+  joint21: {p: 50, i: 0.1, d: 0.01}
+  joint22: {p: 50, i: 0.1, d: 0.01}
+  joint26: {p: 50, i: 0.1, d: 0.01}
+  joint27: {p: 50, i: 0.1, d: 0.01}
+  joint28: {p: 50, i: 0.1, d: 0.01}
+  joint31: {p: 50, i: 0.1, d: 0.01}
+  joint32: {p: 50, i: 0.1, d: 0.01}
+  joint33: {p: 50, i: 0.1, d: 0.01}
+  joint36: {p: 50, i: 0.1, d: 0.01}
+  joint38: {p: 50, i: 0.1, d: 0.01}
+  joint41: {p: 50, i: 0.1, d: 0.01}
+  joint43: {p: 50, i: 0.1, d: 0.01}
+  joint46: {p: 50, i: 0.1, d: 0.01}
+  joint48: {p: 50, i: 0.1, d: 0.01}
+  bottom11: {p: 50, i: 0.1, d: 0.01}
+  bottom11prime: {p: 50, i: 0.1, d: 0.01}
+  top21: {p: 50, i: 0.1, d: 0.01}
+  top21prime: {p: 50, i: 0.1, d: 0.01}
+
+joint_limits:
+  joint11:
+    has_velocity_limits: true
+    max_velocity: 0.5
+  joint16:
+    has_velocity_limits: true
+    max_velocity: 0.5
+  joint17:
+    has_velocity_limits: true
+    max_velocity: 0.5
+  joint18:
+    has_velocity_limits: true
+    max_velocity: 0.5
+  joint21:
+    has_velocity_limits: true
+    max_velocity: 0.5
+  joint22:
+    has_velocity_limits: true
+    max_velocity: 0.5
+  joint26:
+    has_velocity_limits: true
+    max_velocity: 0.5
+  joint27:
+    has_velocity_limits: true
+    max_velocity: 0.5
+  joint28:
+    has_velocity_limits: true
+    max_velocity: 0.5
+  joint31:
+    has_velocity_limits: true
+    max_velocity: 0.5
+  joint32:
+    has_velocity_limits: true
+    max_velocity: 0.5
+  joint33:
+    has_velocity_limits: true
+    max_velocity: 0.5
+  joint36:
+    has_velocity_limits: true
+    max_velocity: 0.5
+  joint38:
+    has_velocity_limits: true
+    max_velocity: 0.5
+  joint41:
+    has_velocity_limits: true
+    max_velocity: 0.5
+  joint43:
+    has_velocity_limits: true
+    max_velocity: 0.5
+  joint46:
+    has_velocity_limits: true
+    max_velocity: 0.5
+  joint48:
+    has_velocity_limits: true
+    max_velocity: 0.5
+  bottom11:
+    has_velocity_limits: true
+    max_velocity: 0.5
+  bottom11prime:
+    has_velocity_limits: true
+    max_velocity: 0.5
+  top21:
+    has_velocity_limits: true
+    max_velocity: 0.5
+  top21prime:
+    has_velocity_limits: true
+    max_velocity: 0.5

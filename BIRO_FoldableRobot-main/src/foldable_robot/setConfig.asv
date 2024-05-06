@@ -1,0 +1,19 @@
+function setConfig(config)
+    if config == 0
+        pairedjointcontrol(0,0,0,0)
+    elseif config == 1
+        pairedjointcontrol(0,0,180,0)
+    elseif config == 2
+        pairedjointcontrol(0,180,180,180)
+    elseif config == 3
+        pairedjointcontrol(0,180,0,180)
+    elseif config == 4
+        pairedjointcontrol(180,180,0,180)
+    elseif config == 5
+        pairedjointcontrol(180,0,0,0)
+    elseif config == 6
+        % Do something
+    elseif config == 7
+        pairedjointcontrol(
+    end
+end

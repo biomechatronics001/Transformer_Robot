@@ -1,0 +1,14 @@
+<?xml	version="1.0" encoding="UTF-8"?>
+<launch>
+  <param name="robot_description" command="cat $(find foldable_robot)/urdf/level_two.urdf" />
+
+  <node name="joint_state_publisher" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui">
+    <rosparam param ="source_list" > ["jointStates"] </rosparam>
+    <rosparam file="$(find foldable_robot)/config/zeroes_level_two.yaml"/>
+
+  </node>
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+  <!--<node name="state_publisher" pkg="foldable_robot" type="state_publisher" />-->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find foldable_robot)/rviz/level_two.rviz" />
+</launch>

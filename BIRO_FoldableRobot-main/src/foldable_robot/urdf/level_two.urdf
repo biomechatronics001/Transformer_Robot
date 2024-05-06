@@ -1,0 +1,3575 @@
+<?xml version="1.0"?>
+<robot name="foldable_robot" xmlns:xacro="http://ros.org/wiki/xacro" >
+<xacro:property name="pi" value="3.14159265" />
+
+  <material name="red">
+    <color rgba="1 0 0 0.5"/>
+  </material>
+
+  <material name="blue">
+    <color rgba="0 0 1 0.5"/>
+  </material>
+
+  <material name="green">
+    <color rgba="0 1 0 0.5"/>
+  </material>
+
+  <material name="magenta">
+    <color rgba="1 0 1 0.5"/>
+  </material>
+
+  <material name="black">
+    <color rgba="0 0 0 0.5"/>
+  </material>
+
+  <material name="white">
+    <color rgba="1 1 1 0.5"/>
+  </material>
+
+  <physics type="ode">
+    <ode>
+      <solver>
+        <type>world</type>
+      </solver>
+      <constraints>
+        <contact_max_correcting_vel>0.1</contact_max_correcting_vel>
+        <contact_surface_layer>0.0001</contact_surface_layer>
+      </constraints>
+    </ode>
+    <max_step_size>0.001</max_step_size>
+  </physics>
+
+  <!--========================UNIT1========================>-->
+  <!--======== Cube 11 =========-->
+  <link name="cube11">
+    <pose> 0 0 0 0 0 0</pose>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass
+        value="0.1" />
+      <inertia
+        ixx="6.023E-05"
+        ixy="0"
+        ixz="0"
+        iyy="7.88E-05"
+        iyz="0"
+        izz="6.023E-05" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "0 0 0"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube1.STL" />
+      </geometry>
+      <material name = "black"/>
+    </visual>
+
+    <collision>
+      <origin rpy = "0 0 0" xyz = "0 0 0"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube1.STL" />
+      </geometry>
+      <surface>
+       <friction>
+         <ode>
+           <mu>0.8</mu>
+           <mu2>0.8</mu2>
+           <fdir1>0 0 0</fdir1>
+           <slip1>0</slip1>
+           <slip2>0</slip2>
+         </ode>
+       </friction>
+      <bounce>
+        <restitution_coefficient>0.0</restitution_coefficient>
+        <threshold>100000.0</threshold>
+      </bounce>
+      <contact>
+        <ode>
+          <soft_cfm>0.0</soft_cfm>
+          <soft_erp>0.2</soft_erp>
+          <kp>1000000.0</kp>
+          <kd>1</kd>
+          <max_vel>0.0</max_vel>
+          <min_depth>0.01</min_depth>
+        </ode>
+      </contact>
+     </surface>
+    </collision>
+  </link>
+
+  <gazebo reference="cube11">
+    <material>Gazebo/Black</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+<!--
+  <link name="world"/>
+  <joint name="fixed" type="fixed">
+    <parent link="world"/>
+    <child link="cube11"/>
+  </joint>
+-->
+  <!--======== Cube 12 =========-->
+  <link name="cube12">
+    <pose> 0 0 0 0 0 0</pose>
+
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.025 0 -0.025"/>
+      <mass
+        value="0.1" />
+      <inertia
+        ixx="6.023E-05"
+        ixy="0"
+        ixz="0"
+        iyy="7.88E-05"
+        iyz="0"
+        izz="6.023E-05" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "-0.05 -0.025 0"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube2.STL" />
+      </geometry>
+      <material name = "blue"/>
+    </visual>
+
+    <collision>
+      <origin rpy = "0 0 0" xyz = "-0.05 -0.025 0"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube2.STL" />
+      </geometry>
+      <surface>
+       <friction>
+         <ode>
+           <mu>0.8</mu>
+           <mu2>0.8</mu2>
+           <fdir1>0 0 0</fdir1>
+           <slip1>0</slip1>
+           <slip2>0</slip2>
+         </ode>
+       </friction>
+      <bounce>
+        <restitution_coefficient>0.0</restitution_coefficient>
+        <threshold>100000.0</threshold>
+      </bounce>
+      <contact>
+        <ode>
+          <soft_cfm>0.0</soft_cfm>
+          <soft_erp>0.2</soft_erp>
+          <kp>1000000.0</kp>
+          <kd>1</kd>
+          <max_vel>0.0</max_vel>
+          <min_depth>0.01</min_depth>
+        </ode>
+      </contact>
+     </surface>
+    </collision>
+  </link>
+
+  <gazebo reference="cube12">
+    <material>Gazebo/Blue</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <!--======== Cube 13 =========-->
+  <link name="cube13">
+    <pose> 0 0 0 0 0 0</pose>
+
+    <inertial>
+      <mass value = "0.1" />
+      <origin rpy = "0 0 0" xyz = "0 -0.025 0.025"/>
+      <inertia
+        ixx="6.023E-05"
+        ixy="0"
+        ixz="0"
+        iyy="7.88E-05"
+        iyz="0"
+        izz="6.023E-05" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "0.025 -0.05 0.05"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube3.STL" />
+      </geometry>
+      <material name = "black"/>
+    </visual>
+
+    <collision>
+      <origin rpy = "0 0 0" xyz = "0.025 -0.05 0.05"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube3.STL" />
+      </geometry>
+      <surface>
+       <friction>
+         <ode>
+           <mu>0.8</mu>
+           <mu2>0.8</mu2>
+           <fdir1>0 0 0</fdir1>
+           <slip1>0</slip1>
+           <slip2>0</slip2>
+         </ode>
+       </friction>
+      <bounce>
+        <restitution_coefficient>0.0</restitution_coefficient>
+        <threshold>100000.0</threshold>
+      </bounce>
+      <contact>
+        <ode>
+          <soft_cfm>0.0</soft_cfm>
+          <soft_erp>0.2</soft_erp>
+          <kp>1000000.0</kp>
+          <kd>1</kd>
+          <max_vel>0.0</max_vel>
+          <min_depth>0.01</min_depth>
+        </ode>
+      </contact>
+     </surface>
+    </collision>
+  </link>
+
+  <gazebo reference="cube13">
+    <material>Gazebo/Black</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <link name="servo28">
+    <inertial>
+      <origin
+        xyz="0 0 0" rpy="0 0 0" />
+      <mass
+        value="0.025" />
+      <inertia
+        ixx="0.0000009375"
+        ixy="0"
+        ixz="0"
+        iyy="0.0000009375"
+        iyz="0"
+        izz="0.0000009375" />
+    </inertial>
+    <visual>
+      <origin rpy = "0 0 0" xyz = "0 0 0"/>
+      <geometry>
+        <box size = "0.015 0.015 0.015"/>
+      </geometry>
+      <material name = "white"/>
+    </visual>
+  </link>
+  <joint name="jointservo28" type="revolute">
+    <parent link="cube28"/>
+    <child link="servo28"/>
+    <origin xyz="-0.025 0.05 0.025" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <limit effort="0" lower="0.0" upper="0.0" velocity="0"/>
+  </joint>
+  <gazebo reference="servo28">
+    <material>Gazebo/White</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <!--======== Cube 14 =========-->
+  <link name="cube14">
+    <pose> 0 0 0 0 0 0</pose>
+
+    <inertial>
+      <mass value = "0.1" />
+      <origin rpy = "0 0 0" xyz = "-0.025 -0.025 0"/>
+      <inertia
+        ixx="6.023E-05"
+        ixy="0"
+        ixz="0"
+        iyy="7.88E-05"
+        iyz="0"
+        izz="6.023E-05" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "0 -0.05 0.025"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube4.STL" />
+      </geometry>
+      <material name = "blue"/>
+    </visual>
+
+    <collision>
+      <origin rpy = "0 0 0" xyz = "0 -0.05 0.025"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube4.STL" />
+      </geometry>
+      <surface>
+       <friction>
+         <ode>
+           <mu>0.8</mu>
+           <mu2>0.8</mu2>
+           <fdir1>0 0 0</fdir1>
+           <slip1>0</slip1>
+           <slip2>0</slip2>
+         </ode>
+       </friction>
+      <bounce>
+        <restitution_coefficient>0.0</restitution_coefficient>
+        <threshold>100000.0</threshold>
+      </bounce>
+      <contact>
+        <ode>
+          <soft_cfm>0.0</soft_cfm>
+          <soft_erp>0.2</soft_erp>
+          <kp>1000000.0</kp>
+          <kd>1</kd>
+          <max_vel>0.0</max_vel>
+          <min_depth>0.01</min_depth>
+        </ode>
+      </contact>
+     </surface>
+    </collision>
+  </link>
+
+  <gazebo reference="cube14">
+    <material>Gazebo/Blue</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <!--======== Cube 15 =========-->
+  <link name="cube15">
+    <pose> 0 0 0 0 0 0</pose>
+
+    <inertial>
+      <mass value = "0.1" />
+      <origin rpy = "0 0 0" xyz = "0 -0.025 0.025"/>
+      <inertia
+        ixx="6.023E-05"
+        ixy="0"
+        ixz="0"
+        iyy="7.88E-05"
+        iyz="0"
+        izz="6.023E-05" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "0.025 -0.05 0.05"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube5.STL" />
+      </geometry>
+      <material name = "black"/>
+    </visual>
+
+    <collision>
+      <origin rpy = "0 0 0" xyz = "0.025 -0.05 0.05"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube5.STL" />
+      </geometry>
+      <surface>
+       <friction>
+         <ode>
+           <mu>0.8</mu>
+           <mu2>0.8</mu2>
+           <fdir1>0 0 0</fdir1>
+           <slip1>0</slip1>
+           <slip2>0</slip2>
+         </ode>
+       </friction>
+      <bounce>
+        <restitution_coefficient>0.0</restitution_coefficient>
+        <threshold>100000.0</threshold>
+      </bounce>
+      <contact>
+        <ode>
+          <soft_cfm>0.0</soft_cfm>
+          <soft_erp>0.2</soft_erp>
+          <kp>1000000.0</kp>
+          <kd>1</kd>
+          <max_vel>0.0</max_vel>
+          <min_depth>0.01</min_depth>
+        </ode>
+      </contact>
+     </surface>
+    </collision>
+  </link>
+
+  <gazebo reference="cube15">
+    <material>Gazebo/Black</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <!--======== Cube 16 =========-->
+  <link name="cube16">
+    <pose> 0 0 0 0 0 0</pose>
+
+    <inertial>
+      <mass value = "0.1" />
+      <origin rpy = "0 0 0" xyz = "-0.025 0 0.025"/>
+      <inertia
+        ixx="6.023E-05"
+        ixy="0"
+        ixz="0"
+        iyy="7.88E-05"
+        iyz="0"
+        izz="6.023E-05" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "0.0 -0.025 0.050"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube6.STL" />
+      </geometry>
+      <material name = "blue"/>
+    </visual>
+
+    <collision>
+      <origin rpy = "0 0 0" xyz = "0.0 -0.025 0.05"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube6.STL" />
+      </geometry>
+      <surface>
+       <friction>
+         <ode>
+           <mu>0.8</mu>
+           <mu2>0.8</mu2>
+           <fdir1>0 0 0</fdir1>
+           <slip1>0</slip1>
+           <slip2>0</slip2>
+         </ode>
+       </friction>
+      <bounce>
+        <restitution_coefficient>0.0</restitution_coefficient>
+        <threshold>100000.0</threshold>
+      </bounce>
+      <contact>
+        <ode>
+          <soft_cfm>0.0</soft_cfm>
+          <soft_erp>0.2</soft_erp>
+          <kp>1000000.0</kp>
+          <kd>1</kd>
+          <max_vel>0.0</max_vel>
+          <min_depth>0.01</min_depth>
+        </ode>
+      </contact>
+     </surface>
+    </collision>
+  </link>
+
+  <gazebo reference="cube16">
+    <material>Gazebo/Blue</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <!--======== Cube 17 =========-->
+  <link name="cube17">
+    <pose> 0 0 0 0 0 0</pose>
+
+    <inertial>
+      <mass value = "0.1" />
+      <origin rpy = "0 0 0" xyz = "0 0.025 -0.025"/>
+      <inertia
+        ixx="6.023E-05"
+        ixy="0"
+        ixz="0"
+        iyy="7.88E-05"
+        iyz="0"
+        izz="6.023E-05" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "-0.025 0.05 0"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube7.STL" />
+      </geometry>
+      <material name = "black"/>
+    </visual>
+
+    <collision>
+      <origin rpy = "0 0 0" xyz = "-0.025 0.05 0"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube7.STL" />
+      </geometry>
+      <surface>
+       <friction>
+         <ode>
+           <mu>0.8</mu>
+           <mu2>0.8</mu2>
+           <fdir1>0 0 0</fdir1>
+           <slip1>0</slip1>
+           <slip2>0</slip2>
+         </ode>
+       </friction>
+      <bounce>
+        <restitution_coefficient>0.0</restitution_coefficient>
+        <threshold>100000.0</threshold>
+      </bounce>
+      <contact>
+        <ode>
+          <soft_cfm>0.0</soft_cfm>
+          <soft_erp>0.2</soft_erp>
+          <kp>1000000.0</kp>
+          <kd>1</kd>
+          <max_vel>0.0</max_vel>
+          <min_depth>0.01</min_depth>
+        </ode>
+      </contact>
+     </surface>
+    </collision>
+  </link>
+
+  <gazebo reference="cube17">
+    <material>Gazebo/Black</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <!--======== Cube 18 =========-->
+  <link name="cube18">
+    <pose> 0 0 0 0 0 0</pose>
+
+    <inertial>
+      <mass value = "0.1" />
+      <origin rpy = "0 0 0" xyz = "-0.025 0.025 0"/>
+      <inertia
+        ixx="6.023E-05"
+        ixy="0"
+        ixz="0"
+        iyy="7.88E-05"
+        iyz="0"
+        izz="6.023E-05" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "-0.05 0.05 0.025"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube8.STL" />
+      </geometry>
+      <material name="blue"/>
+    </visual>
+
+    <collision>
+      <origin rpy = "0 0 0" xyz = "-0.05 0.05 0.025"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube8.STL" />
+      </geometry>
+      <surface>
+       <friction>
+         <ode>
+           <mu>0.8</mu>
+           <mu2>0.8</mu2>
+           <fdir1>0 0 0</fdir1>
+           <slip1>0</slip1>
+           <slip2>0</slip2>
+         </ode>
+       </friction>
+      <bounce>
+        <restitution_coefficient>0.0</restitution_coefficient>
+        <threshold>100000.0</threshold>
+      </bounce>
+      <contact>
+        <ode>
+          <soft_cfm>0.0</soft_cfm>
+          <soft_erp>0.2</soft_erp>
+          <kp>1000000.0</kp>
+          <kd>1</kd>
+          <max_vel>0.0</max_vel>
+          <min_depth>0.01</min_depth>
+        </ode>
+      </contact>
+     </surface>
+    </collision>
+  </link>
+
+  <gazebo reference="cube18">
+    <material>Gazebo/Blue</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <link name="servo17">
+    <inertial>
+      <origin
+        xyz="0 0 0" rpy="0 0 0" />
+      <mass
+        value="0.025" />
+      <inertia
+        ixx="0.0000009375"
+        ixy="0"
+        ixz="0"
+        iyy="0.0000009375"
+        iyz="0"
+        izz="0.0000009375" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "0 0 0"/>
+      <geometry>
+        <box size = "0.015 0.015 0.015"/>
+      </geometry>
+      <material name = "white"/>
+    </visual>
+  </link>
+  <joint name="jointservo17" type="revolute">
+    <parent link="cube18"/>
+    <child link="servo17"/>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <limit effort="0" lower="0.0" upper="0.0" velocity="0"/>
+  </joint>
+  <gazebo reference="servo17">
+    <material>Gazebo/White</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <link name="servo18">
+    <inertial>
+      <origin
+        xyz="0 0 0" rpy="0 0 0" />
+      <mass
+        value="0.025" />
+      <inertia
+        ixx="0.0000009375"
+        ixy="0"
+        ixz="0"
+        iyy="0.0000009375"
+        iyz="0"
+        izz="0.0000009375" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "0 0 0"/>
+      <geometry>
+        <box size = "0.015 0.015 0.015"/>
+      </geometry>
+      <material name = "white"/>
+    </visual>
+  </link>
+  <joint name="jointservo18" type="revolute">
+    <parent link="cube18"/>
+    <child link="servo18"/>
+    <origin xyz="-0.025 0.05 0.025" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <limit effort="0" lower="0.0" upper="0.0" velocity="0"/>
+  </joint>
+  <gazebo reference="servo18">
+    <material>Gazebo/White</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <!--========== Unit 1 Joints and Transmissions ===========-->
+  <!--======== Joint 11 =========-->
+  <joint name="joint11" type="revolute">
+    <parent link="cube11"/>
+    <child link="cube12"/>
+    <origin rpy="0 -1.57 0" xyz="0.025 0 0.025"/>
+    <axis xyz="0 1 0" />
+    <limit effort="50" lower="-3.14" upper="0" velocity="0.5"/>
+  </joint>
+
+  <transmission name="1firstJoint">
+    <type>transmission_interface/SimpleTransmission</type>
+
+    <actuator name="motor11">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+
+    <joint name="joint11">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+  <link name="servo11">
+    <inertial>
+      <origin
+        xyz="0 0 0" rpy="0 0 0" />
+      <mass
+        value="0.025" />
+      <inertia
+        ixx="0.0000009375"
+        ixy="0"
+        ixz="0"
+        iyy="0.0000009375"
+        iyz="0"
+        izz="0.0000009375" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "0 0 0"/>
+      <geometry>
+        <box size = "0.015 0.015 0.015"/>
+      </geometry>
+      <material name = "white"/>
+    </visual>
+  </link>
+  <joint name="jointservo11" type="revolute">
+    <parent link="cube12"/>
+    <child link="servo11"/>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <limit effort="0" lower="0.0" upper="0.0" velocity="0"/>
+  </joint>
+  <gazebo reference="servo11">
+    <material>Gazebo/White</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <!--======== Joint 12 =========-->
+  <joint name="joint12" type="revolute">
+    <parent link="cube12"/>
+    <child link="cube13"/>
+    <origin rpy="0 0 0" xyz="-0.025 -0.025 -0.05"/>
+    <axis xyz="1 0 0" />
+    <limit effort="50" lower="0" upper="3.14" velocity="0.5"/>
+  </joint>
+
+  <!--======== Joint 13 =========-->
+  <joint name="joint13" type="revolute">
+    <parent link="cube13"/>
+    <child link="cube14"/>
+    <origin rpy="0 0 0" xyz="0.025 -0.05 0.025" />
+    <axis xyz="0 0 1" />
+    <limit effort="50" lower="0" upper="3.14" velocity="0.5"/>
+  </joint>
+
+  <!--======== Joint 14 =========-->
+  <joint name="joint14" type="revolute">
+    <parent link="cube14"/>
+    <child link="cube15"/>
+    <origin rpy="0 0 0" xyz="-0.025 -0.05 -.025"/>
+    <axis xyz="1 0 0" />
+    <limit effort="50" lower="0" upper="3.14" velocity="0.5"/>
+  </joint>
+
+  <!--======== Joint 15 =========-->
+  <joint name="joint15" type="revolute">
+    <parent link="cube15"/>
+    <child link="cube16"/>
+    <origin rpy="0 0 0" xyz="0.025 -0.025 0.05"/>
+    <axis xyz="0 1 0" />
+    <limit effort="50" lower="0" upper="3.14" velocity="0.5"/>
+  </joint>
+
+  <!--======== Joint 16 =========-->
+  <joint name="joint16" type="revolute">
+    <parent link="cube16"/>
+    <child link="cube17"/>
+    <origin rpy="0 0 0" xyz="-0.025 0.025 0.05"/>
+    <axis xyz="1 0 0" />
+    <limit effort="50" lower="0" upper="3.14" velocity="0.5"/>
+  </joint>
+
+  <transmission name="1sixthJoint">
+    <type>transmission_interface/SimpleTransmission</type>
+
+    <actuator name="motor16">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+
+    <joint name="joint16">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+  <!--======== Joint 17 =========-->
+  <joint name="joint17" type="revolute">
+    <parent link="cube17"/>
+    <child link="cube18"/>
+    <origin rpy="0 0 0" xyz="0.025 0.05 -0.025"/>
+    <axis xyz="0 0 1" />
+    <limit effort="50" lower="-3.14" upper="0" velocity="0.5"/>
+  </joint>
+
+  <transmission name="1seventhJoint">
+    <type>transmission_interface/SimpleTransmission</type>
+
+    <actuator name="motor17">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+
+    <joint name="joint17">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+  <link name="servo16">
+    <inertial>
+      <origin
+        xyz="0 0 0" rpy="0 0 0" />
+      <mass
+        value="0.025" />
+      <inertia
+        ixx="0.0000009375"
+        ixy="0"
+        ixz="0"
+        iyy="0.0000009375"
+        iyz="0"
+        izz="0.0000009375" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "0 0 0"/>
+      <geometry>
+        <box size = "0.015 0.015 0.015"/>
+      </geometry>
+      <material name = "white"/>
+    </visual>
+  </link>
+  <joint name="jointservo16" type="revolute">
+    <parent link="cube17"/>
+    <child link="servo16"/>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <limit effort="0" lower="0.0" upper="0.0" velocity="0"/>
+  </joint>
+  <gazebo reference="servo16">
+    <material>Gazebo/White</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <!--======== Joint 18 (Gazebo) =========-->
+  <gazebo>
+    <joint name="joint18" type="revolute">
+      <pose relative_to='cube11'>-0.025 -0.025 0 0 -0 0</pose>
+      <parent>cube18</parent>
+      <child>cube11</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+      </axis>
+      <limit>
+        <lower>0</lower>
+        <upper>3.14</upper>
+        <effort>50</effort>
+        <velocity>0.5</velocity>
+      </limit>
+    </joint>
+  </gazebo>
+
+  <transmission name="1eighthJoint">
+    <type>transmission_interface/SimpleTransmission</type>
+
+    <actuator name="motor18">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+
+    <joint name="joint18">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+  <!--========================UNIT 2========================>-->
+  <!--======== Cube 21 =========-->
+  <link name="cube21">
+    <pose> 0 0 0 0 0 0</pose>
+
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.025 0 -0.025"/>
+      <mass
+        value="0.1" />
+      <inertia
+        ixx="6.023E-05"
+        ixy="0"
+        ixz="0"
+        iyy="7.88E-05"
+        iyz="0"
+        izz="6.023E-05" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "0.025 0 -0.025"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube1.STL" />
+      </geometry>
+      <material name = "black"/>
+    </visual>
+
+    <collision>
+      <origin rpy = "0 0 0" xyz = "0.025 0 -0.025"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube1.STL" />
+      </geometry>
+      <surface>
+       <friction>
+         <ode>
+           <mu>0.8</mu>
+           <mu2>0.8</mu2>
+           <fdir1>0 0 0</fdir1>
+           <slip1>0</slip1>
+           <slip2>0</slip2>
+         </ode>
+       </friction>
+      <bounce>
+        <restitution_coefficient>0.0</restitution_coefficient>
+        <threshold>100000.0</threshold>
+      </bounce>
+      <contact>
+        <ode>
+          <soft_cfm>0.0</soft_cfm>
+          <soft_erp>0.2</soft_erp>
+          <kp>1000000.0</kp>
+          <kd>1</kd>
+          <max_vel>0.0</max_vel>
+          <min_depth>0.01</min_depth>
+        </ode>
+      </contact>
+     </surface>
+    </collision>
+  </link>
+
+  <gazebo reference="cube21">
+    <material>Gazebo/Black</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <joint name="bottom11" type="revolute">
+    <parent link="cube12"/>
+    <child link="cube21"/>
+    <origin xyz="-0.05 0 -0.05" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <limit effort="50" lower="0" upper="3.14" velocity="0.5"/>
+  </joint>
+
+  <transmission name="bottomJoint">
+    <type>transmission_interface/SimpleTransmission</type>
+
+    <actuator name="motorbottom">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+
+    <joint name="bottom11">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+  <link name="servob1">
+    <inertial>
+      <origin
+        xyz="0 0 0" rpy="0 0 0" />
+      <mass
+        value="0.025" />
+      <inertia
+        ixx="0.0000009375"
+        ixy="0"
+        ixz="0"
+        iyy="0.0000009375"
+        iyz="0"
+        izz="0.0000009375" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "0 0 0"/>
+      <geometry>
+        <box size = "0.015 0.015 0.015"/>
+      </geometry>
+      <material name = "white"/>
+    </visual>
+  </link>
+  <joint name="jointservob1" type="revolute">
+    <parent link="cube21"/>
+    <child link="servob1"/>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <limit effort="0" lower="0.0" upper="0.0" velocity="0"/>
+  </joint>
+  <gazebo reference="servob1">
+    <material>Gazebo/White</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <!--======== Cube 22 =========-->
+  <link name="cube22">
+    <pose> 0 0 0 0 0 0</pose>
+
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.025 0 -0.025"/>
+      <mass
+        value="0.1" />
+      <inertia
+        ixx="6.023E-05"
+        ixy="0"
+        ixz="0"
+        iyy="7.88E-05"
+        iyz="0"
+        izz="6.023E-05" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "-0.05 -0.025 0"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube2.STL" />
+      </geometry>
+      <material name = "red"/>
+    </visual>
+
+    <collision>
+      <origin rpy = "0 0 0" xyz = "-0.05 -0.025 0"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube2.STL" />
+      </geometry>
+      <surface>
+       <friction>
+         <ode>
+           <mu>0.8</mu>
+           <mu2>0.8</mu2>
+           <fdir1>0 0 0</fdir1>
+           <slip1>0</slip1>
+           <slip2>0</slip2>
+         </ode>
+       </friction>
+      <bounce>
+        <restitution_coefficient>0.0</restitution_coefficient>
+        <threshold>100000.0</threshold>
+      </bounce>
+      <contact>
+        <ode>
+          <soft_cfm>0.0</soft_cfm>
+          <soft_erp>0.2</soft_erp>
+          <kp>1000000.0</kp>
+          <kd>1</kd>
+          <max_vel>0.0</max_vel>
+          <min_depth>0.01</min_depth>
+        </ode>
+      </contact>
+     </surface>
+    </collision>
+  </link>
+
+  <gazebo reference="cube22">
+    <material>Gazebo/Red</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <joint name="joint21" type="revolute">
+    <parent link="cube21"/>
+    <child link="cube22"/>
+    <origin xyz="0.05 0 -0.05" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <limit effort="50" lower="-3.14" upper="0" velocity="0.5"/>
+  </joint>
+
+  <transmission name="2firstJoint">
+    <type>transmission_interface/SimpleTransmission</type>
+
+    <actuator name="motor21">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+
+    <joint name="joint21">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+  <link name="servo21">
+    <inertial>
+      <origin
+        xyz="0 0 0" rpy="0 0 0" />
+      <mass
+        value="0.025" />
+      <inertia
+        ixx="0.0000009375"
+        ixy="0"
+        ixz="0"
+        iyy="0.0000009375"
+        iyz="0"
+        izz="0.0000009375" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "0 0 0"/>
+      <geometry>
+        <box size = "0.015 0.015 0.015"/>
+      </geometry>
+      <material name = "white"/>
+    </visual>
+  </link>
+  <joint name="jointservo21" type="revolute">
+    <parent link="cube22"/>
+    <child link="servo21"/>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <limit effort="0" lower="0.0" upper="0.0" velocity="0"/>
+  </joint>
+  <gazebo reference="servo21">
+    <material>Gazebo/White</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <!--======== Cube 23 =========-->
+  <link name="cube23">
+    <pose> 0 0 0 0 0 0</pose>
+
+    <inertial>
+      <mass value = "0.1" />
+      <origin rpy = "0 0 0" xyz = "0 -0.025 0.025"/>
+      <inertia
+        ixx="6.023E-05"
+        ixy="0"
+        ixz="0"
+        iyy="7.88E-05"
+        iyz="0"
+        izz="6.023E-05" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "0.025 -0.05 0.05"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube3.STL" />
+      </geometry>
+      <material name = "black"/>
+    </visual>
+
+    <collision>
+      <origin rpy = "0 0 0" xyz = "0.025 -0.05 0.05"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube3.STL" />
+      </geometry>
+      <surface>
+       <friction>
+         <ode>
+           <mu>0.8</mu>
+           <mu2>0.8</mu2>
+           <fdir1>0 0 0</fdir1>
+           <slip1>0</slip1>
+           <slip2>0</slip2>
+         </ode>
+       </friction>
+      <bounce>
+        <restitution_coefficient>0.0</restitution_coefficient>
+        <threshold>100000.0</threshold>
+      </bounce>
+      <contact>
+        <ode>
+          <soft_cfm>0.0</soft_cfm>
+          <soft_erp>0.2</soft_erp>
+          <kp>1000000.0</kp>
+          <kd>1</kd>
+          <max_vel>0.0</max_vel>
+          <min_depth>0.01</min_depth>
+        </ode>
+      </contact>
+     </surface>
+    </collision>
+  </link>
+
+  <gazebo reference="cube23">
+    <material>Gazebo/Black</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <joint name="joint22" type="revolute">
+    <parent link="cube22"/>
+    <child link="cube23"/>
+    <origin rpy="0 0 0" xyz="-0.025 -0.025 -0.05"/>
+    <axis xyz="1 0 0" />
+    <limit effort="50" lower="0" upper="3.14" velocity="0.5"/>
+  </joint>
+
+  <transmission name="2secondJoint">
+    <type>transmission_interface/SimpleTransmission</type>
+
+    <actuator name="motor22">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+
+    <joint name="joint22">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+  <link name="servo22">
+    <inertial>
+      <origin
+        xyz="0 0 0" rpy="0 0 0" />
+      <mass
+        value="0.025" />
+      <inertia
+        ixx="0.0000009375"
+        ixy="0"
+        ixz="0"
+        iyy="0.0000009375"
+        iyz="0"
+        izz="0.0000009375" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "0 0 0"/>
+      <geometry>
+        <box size = "0.015 0.015 0.015"/>
+      </geometry>
+      <material name = "white"/>
+    </visual>
+  </link>
+  <joint name="jointservo22" type="revolute">
+    <parent link="cube23"/>
+    <child link="servo22"/>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <limit effort="0" lower="0.0" upper="0.0" velocity="0"/>
+  </joint>
+  <gazebo reference="servo22">
+    <material>Gazebo/White</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <!--======== Cube 24 =========-->
+  <link name="cube24">
+    <pose> 0 0 0 0 0 0</pose>
+
+    <inertial>
+      <mass value = "0.1" />
+      <origin rpy = "0 0 0" xyz = "-0.025 -0.025 0"/>
+      <inertia
+        ixx="6.023E-05"
+        ixy="0"
+        ixz="0"
+        iyy="7.88E-05"
+        iyz="0"
+        izz="6.023E-05" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "0 -0.05 0.025"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube4.STL" />
+      </geometry>
+      <material name = "red"/>
+    </visual>
+
+    <collision>
+      <origin rpy = "0 0 0" xyz = "0 -0.05 0.025"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube4.STL" />
+      </geometry>
+      <surface>
+       <friction>
+         <ode>
+           <mu>0.8</mu>
+           <mu2>0.8</mu2>
+           <fdir1>0 0 0</fdir1>
+           <slip1>0</slip1>
+           <slip2>0</slip2>
+         </ode>
+       </friction>
+      <bounce>
+        <restitution_coefficient>0.0</restitution_coefficient>
+        <threshold>100000.0</threshold>
+      </bounce>
+      <contact>
+        <ode>
+          <soft_cfm>0.0</soft_cfm>
+          <soft_erp>0.2</soft_erp>
+          <kp>1000000.0</kp>
+          <kd>1</kd>
+          <max_vel>0.0</max_vel>
+          <min_depth>0.01</min_depth>
+        </ode>
+      </contact>
+     </surface>
+    </collision>
+  </link>
+
+  <gazebo reference="cube24">
+    <material>Gazebo/Red</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <joint name="joint23" type="revolute">
+    <parent link="cube23"/>
+    <child link="cube24"/>
+    <origin rpy="0 0 0" xyz="0.025 -0.05 0.025"/>
+    <axis xyz="0 0 1" />
+    <limit effort="50" lower="0" upper="3.14" velocity="0.5"/>
+  </joint>
+
+  <!--======== Cube 25 =========-->
+  <link name="cube25">
+    <pose> 0 0 0 0 0 0</pose>
+
+    <inertial>
+      <mass value = "0.1" />
+      <origin rpy = "0 0 0" xyz = "0 -0.025 0.025"/>
+      <inertia
+        ixx="6.023E-05"
+        ixy="0"
+        ixz="0"
+        iyy="7.88E-05"
+        iyz="0"
+        izz="6.023E-05" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "0.025 -0.05 0.05"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube5.STL" />
+      </geometry>
+      <material name = "black"/>
+    </visual>
+
+    <collision>
+      <origin rpy = "0 0 0" xyz = "0.025 -0.05 0.05"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube5.STL" />
+      </geometry>
+      <surface>
+       <friction>
+         <ode>
+           <mu>0.8</mu>
+           <mu2>0.8</mu2>
+           <fdir1>0 0 0</fdir1>
+           <slip1>0</slip1>
+           <slip2>0</slip2>
+         </ode>
+       </friction>
+      <bounce>
+        <restitution_coefficient>0.0</restitution_coefficient>
+        <threshold>100000.0</threshold>
+      </bounce>
+      <contact>
+        <ode>
+          <soft_cfm>0.0</soft_cfm>
+          <soft_erp>0.2</soft_erp>
+          <kp>1000000.0</kp>
+          <kd>1</kd>
+          <max_vel>0.0</max_vel>
+          <min_depth>0.01</min_depth>
+        </ode>
+      </contact>
+     </surface>
+    </collision>
+  </link>
+
+  <gazebo reference="cube25">
+    <material>Gazebo/Black</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <joint name="joint24" type="revolute">
+    <parent link="cube24"/>
+    <child link="cube25"/>
+    <origin rpy="0 0 0" xyz="-0.025 -0.05 -0.025"/>
+    <axis xyz="1 0 0" />
+    <limit effort="50" lower="0" upper="3.14" velocity="0.5"/>
+  </joint>
+
+  <!--======== Cube 26 =========-->
+  <link name="cube26">
+    <pose> 0 0 0 0 0 0</pose>
+
+    <inertial>
+      <mass value = "0.1" />
+      <origin rpy = "0 0 0" xyz = "-0.025 0 0.025"/>
+      <inertia
+        ixx="6.023E-05"
+        ixy="0"
+        ixz="0"
+        iyy="7.88E-05"
+        iyz="0"
+        izz="6.023E-05" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "0.0 -0.025 0.050"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube6.STL" />
+      </geometry>
+      <material name = "red"/>
+    </visual>
+
+    <collision>
+      <origin rpy = "0 0 0" xyz = "0.0 -0.025 0.05"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube6.STL" />
+      </geometry>
+      <surface>
+       <friction>
+         <ode>
+           <mu>0.8</mu>
+           <mu2>0.8</mu2>
+           <fdir1>0 0 0</fdir1>
+           <slip1>0</slip1>
+           <slip2>0</slip2>
+         </ode>
+       </friction>
+      <bounce>
+        <restitution_coefficient>0.0</restitution_coefficient>
+        <threshold>100000.0</threshold>
+      </bounce>
+      <contact>
+        <ode>
+          <soft_cfm>0.0</soft_cfm>
+          <soft_erp>0.2</soft_erp>
+          <kp>1000000.0</kp>
+          <kd>1</kd>
+          <max_vel>0.0</max_vel>
+          <min_depth>0.01</min_depth>
+        </ode>
+      </contact>
+     </surface>
+    </collision>
+  </link>
+
+  <gazebo reference="cube26">
+    <material>Gazebo/Red</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <joint name="joint25" type="revolute">
+    <parent link="cube25"/>
+    <child link="cube26"/>
+    <origin rpy="0 0 0" xyz="0.025 -0.025 0.05"/>
+    <axis xyz="0 1 0" />
+    <limit effort="50" lower="0" upper="3.14" velocity="0.5"/>
+  </joint>
+
+  <!--======== Cube 27 =========-->
+  <link name="cube27">
+    <pose> 0 0 0 0 0 0</pose>
+
+    <inertial>
+      <mass value = "0.1" />
+      <origin rpy = "0 0 0" xyz = "0 0.025 -0.025"/>
+      <inertia
+        ixx="6.023E-05"
+        ixy="0"
+        ixz="0"
+        iyy="7.88E-05"
+        iyz="0"
+        izz="6.023E-05" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "-0.025 0.05 0"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube7.STL" />
+      </geometry>
+      <material name = "black"/>
+    </visual>
+
+    <collision>
+      <origin rpy = "0 0 0" xyz = "-0.025 0.05 0"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube7.STL" />
+      </geometry>
+      <surface>
+       <friction>
+         <ode>
+           <mu>0.8</mu>
+           <mu2>0.8</mu2>
+           <fdir1>0 0 0</fdir1>
+           <slip1>0</slip1>
+           <slip2>0</slip2>
+         </ode>
+       </friction>
+      <bounce>
+        <restitution_coefficient>0.0</restitution_coefficient>
+        <threshold>100000.0</threshold>
+      </bounce>
+      <contact>
+        <ode>
+          <soft_cfm>0.0</soft_cfm>
+          <soft_erp>0.2</soft_erp>
+          <kp>1000000.0</kp>
+          <kd>1</kd>
+          <max_vel>0.0</max_vel>
+          <min_depth>0.01</min_depth>
+        </ode>
+      </contact>
+     </surface>
+    </collision>
+  </link>
+
+  <gazebo reference="cube27">
+    <material>Gazebo/Black</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <joint name="joint26" type="revolute">
+    <parent link="cube26"/>
+    <child link="cube27"/>
+    <origin rpy="0 0 0" xyz="-0.025 0.025 0.05"/>
+    <axis xyz="1 0 0" />
+    <limit effort="50" lower="0" upper="3.14" velocity="0.5"/>
+  </joint>
+
+  <transmission name="2sixthJoint">
+    <type>transmission_interface/SimpleTransmission</type>
+
+    <actuator name="motor26">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+
+    <joint name="joint26">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+  <link name="servo26">
+    <inertial>
+      <origin
+        xyz="0 0 0" rpy="0 0 0" />
+      <mass
+        value="0.025" />
+      <inertia
+        ixx="0.0000009375"
+        ixy="0"
+        ixz="0"
+        iyy="0.0000009375"
+        iyz="0"
+        izz="0.0000009375" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "0 0 0"/>
+      <geometry>
+        <box size = "0.015 0.015 0.015"/>
+      </geometry>
+      <material name = "white"/>
+    </visual>
+  </link>
+  <joint name="jointservo26" type="revolute">
+    <parent link="cube27"/>
+    <child link="servo26"/>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <limit effort="0" lower="0.0" upper="0.0" velocity="0"/>
+  </joint>
+  <gazebo reference="servo26">
+    <material>Gazebo/White</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <!--======== Cube 28 =========-->
+  <link name="cube28">
+    <pose> 0 0 0 0 0 0</pose>
+
+    <inertial>
+      <mass value = "0.1" />
+      <origin rpy = "0 0 0" xyz = "-0.025 0.025 0"/>
+      <inertia
+        ixx="6.023E-05"
+        ixy="0"
+        ixz="0"
+        iyy="7.88E-05"
+        iyz="0"
+        izz="6.023E-05" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "-0.05 0.05 0.025"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube8.STL" />
+      </geometry>
+      <material name="red"/>
+    </visual>
+
+    <collision>
+      <origin rpy = "0 0 0" xyz = "-0.05 0.05 0.025"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube8.STL" />
+      </geometry>
+      <surface>
+       <friction>
+         <ode>
+           <mu>0.8</mu>
+           <mu2>0.8</mu2>
+           <fdir1>0 0 0</fdir1>
+           <slip1>0</slip1>
+           <slip2>0</slip2>
+         </ode>
+       </friction>
+      <bounce>
+        <restitution_coefficient>0.0</restitution_coefficient>
+        <threshold>100000.0</threshold>
+      </bounce>
+      <contact>
+        <ode>
+          <soft_cfm>0.0</soft_cfm>
+          <soft_erp>0.2</soft_erp>
+          <kp>1000000.0</kp>
+          <kd>1</kd>
+          <max_vel>0.0</max_vel>
+          <min_depth>0.01</min_depth>
+        </ode>
+      </contact>
+     </surface>
+    </collision>
+  </link>
+
+  <gazebo reference="cube28">
+    <material>Gazebo/Red</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <joint name="joint27" type="revolute">
+    <parent link="cube27"/>
+    <child link="cube28"/>
+    <origin rpy="0 0 0" xyz="0.025 0.05 -0.025"/>
+    <axis xyz="0 0 1" />
+    <limit effort="50" lower="-3.14" upper="0" velocity="0.5"/>
+  </joint>
+
+  <transmission name="2seventhJoint">
+    <type>transmission_interface/SimpleTransmission</type>
+
+    <actuator name="motor27">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+
+    <joint name="joint27">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+  <gazebo>
+    <joint name="joint28" type="revolute">
+      <pose relative_to='cube21'>0.025 -0.025 0 0 -0 0</pose>
+      <parent>cube28</parent>
+      <child>cube21</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+      </axis>
+      <limit>
+        <lower>0</lower>
+        <upper>3.14</upper>
+        <effort>50</effort>
+        <velocity>0.5</velocity>
+      </limit>
+    </joint>
+  </gazebo>
+
+  <transmission name="2eighthJoint">
+    <type>transmission_interface/SimpleTransmission</type>
+
+    <actuator name="motor28">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+
+    <joint name="joint28">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+  <link name="servo27">
+    <inertial>
+      <origin
+        xyz="0 0 0" rpy="0 0 0" />
+      <mass
+        value="0.025" />
+      <inertia
+        ixx="0.0000009375"
+        ixy="0"
+        ixz="0"
+        iyy="0.0000009375"
+        iyz="0"
+        izz="0.0000009375" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "0 0 0"/>
+      <geometry>
+        <box size = "0.015 0.015 0.015"/>
+      </geometry>
+      <material name = "white"/>
+    </visual>
+  </link>
+  <joint name="jointservo27" type="revolute">
+    <parent link="cube28"/>
+    <child link="servo27"/>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <limit effort="0" lower="0.0" upper="0.0" velocity="0"/>
+  </joint>
+  <gazebo reference="servo27">
+    <material>Gazebo/White</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <!--========================UNIT 3========================>-->
+  <!--======== Cube 32 =========-->
+  <link name="cube32">
+    <pose> 0 0 0 0 0 0</pose>
+
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.025 -0.025 0"/>
+      <mass
+        value="0.1" />
+      <inertia
+        ixx="6.023E-05"
+        ixy="0"
+        ixz="0"
+        iyy="7.88E-05"
+        iyz="0"
+        izz="6.023E-05" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "-0.05 -0.05 0.025"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube2.STL" />
+      </geometry>
+      <material name = "green"/>
+    </visual>
+
+    <collision>
+      <origin rpy = "0 0 0" xyz = "-0.05 -0.05 0.025"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube2.STL" />
+      </geometry>
+      <surface>
+       <friction>
+         <ode>
+           <mu>0.8</mu>
+           <mu2>0.8</mu2>
+           <fdir1>0 0 0</fdir1>
+           <slip1>0</slip1>
+           <slip2>0</slip2>
+         </ode>
+       </friction>
+      <bounce>
+        <restitution_coefficient>0.0</restitution_coefficient>
+        <threshold>100000.0</threshold>
+      </bounce>
+      <contact>
+        <ode>
+          <soft_cfm>0.0</soft_cfm>
+          <soft_erp>0.2</soft_erp>
+          <kp>1000000.0</kp>
+          <kd>1</kd>
+          <max_vel>0.0</max_vel>
+          <min_depth>0.01</min_depth>
+        </ode>
+      </contact>
+     </surface>
+    </collision>
+  </link>
+
+  <gazebo reference="cube32">
+    <material>Gazebo/Green</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <joint name="top21prime" type="revolute">
+    <parent link="cube25"/>
+    <child link="cube32"/>
+    <origin xyz="0.025 -0.05 0.025" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <limit effort="50" lower="0" upper="3.14" velocity="0.5"/>
+  </joint>
+
+  <transmission name="top21primeJoint">
+    <type>transmission_interface/SimpleTransmission</type>
+
+    <actuator name="motortopprime">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+
+    <joint name="top21prime">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+  <link name="servot1">
+    <inertial>
+      <origin
+        xyz="0 0 0" rpy="0 0 0" />
+      <mass
+        value="0.025" />
+      <inertia
+        ixx="0.0000009375"
+        ixy="0"
+        ixz="0"
+        iyy="0.0000009375"
+        iyz="0"
+        izz="0.0000009375" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "0 0 0"/>
+      <geometry>
+        <box size = "0.015 0.015 0.015"/>
+      </geometry>
+      <material name = "white"/>
+    </visual>
+  </link>
+  <joint name="jointservot1" type="revolute">
+    <parent link="cube32"/>
+    <child link="servot1"/>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <limit effort="0" lower="0.0" upper="0.0" velocity="0"/>
+  </joint>
+  <gazebo reference="servot1">
+    <material>Gazebo/White</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <!--======== Cube 31 =========-->
+  <link name="cube31">
+    <pose> 0 0 0 0 0 0</pose>
+
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.025 0 0.025"/>
+      <mass
+        value="0.1" />
+      <inertia
+        ixx="6.023E-05"
+        ixy="0"
+        ixz="0"
+        iyy="7.88E-05"
+        iyz="0"
+        izz="6.023E-05" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "-0.025 0 0.025"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube1.STL" />
+      </geometry>
+      <material name = "black"/>
+    </visual>
+
+    <collision>
+      <origin rpy = "0 0 0" xyz = "-0.025 0 0.025"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube1.STL" />
+      </geometry>
+      <surface>
+       <friction>
+         <ode>
+           <mu>0.8</mu>
+           <mu2>0.8</mu2>
+           <fdir1>0 0 0</fdir1>
+           <slip1>0</slip1>
+           <slip2>0</slip2>
+         </ode>
+       </friction>
+      <bounce>
+        <restitution_coefficient>0.0</restitution_coefficient>
+        <threshold>100000.0</threshold>
+      </bounce>
+      <contact>
+        <ode>
+          <soft_cfm>0.0</soft_cfm>
+          <soft_erp>0.2</soft_erp>
+          <kp>1000000.0</kp>
+          <kd>1</kd>
+          <max_vel>0.0</max_vel>
+          <min_depth>0.01</min_depth>
+        </ode>
+      </contact>
+     </surface>
+    </collision>
+  </link>
+
+  <gazebo reference="cube31">
+    <material>Gazebo/Black</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <joint name="joint31" type="revolute">
+    <parent link="cube32"/>
+    <child link="cube31"/>
+    <origin xyz="0 -0.025 0.025" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <limit effort="50" lower="0" upper="3.14" velocity="0.5"/>
+  </joint>
+
+  <transmission name="3firstJoint">
+    <type>transmission_interface/SimpleTransmission</type>
+
+    <actuator name="motor31">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+
+    <joint name="joint31">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+  <link name="servo31">
+    <inertial>
+      <origin
+        xyz="0 0 0" rpy="0 0 0" />
+      <mass
+        value="0.025" />
+      <inertia
+        ixx="0.0000009375"
+        ixy="0"
+        ixz="0"
+        iyy="0.0000009375"
+        iyz="0"
+        izz="0.0000009375" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "0 0 0"/>
+      <geometry>
+        <box size = "0.015 0.015 0.015"/>
+      </geometry>
+      <material name = "white"/>
+    </visual>
+  </link>
+  <joint name="jointservo31" type="revolute">
+    <parent link="cube31"/>
+    <child link="servo31"/>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <limit effort="0" lower="0.0" upper="0.0" velocity="0"/>
+  </joint>
+  <gazebo reference="servo31">
+    <material>Gazebo/White</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <!--======== Cube 33 =========-->
+  <link name="cube33">
+    <pose> 0 0 0 0 0 0</pose>
+
+    <inertial>
+      <mass value = "0.1" />
+      <origin rpy = "0 0 0" xyz = "0 -0.025 0.025"/>
+      <inertia
+        ixx="6.023E-05"
+        ixy="0"
+        ixz="0"
+        iyy="7.88E-05"
+        iyz="0"
+        izz="6.023E-05" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "0.025 -0.05 0.05"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube3.STL" />
+      </geometry>
+      <material name = "black"/>
+    </visual>
+
+    <collision>
+      <origin rpy = "0 0 0" xyz = "0.025 -0.05 0.05"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube3.STL" />
+      </geometry>
+      <surface>
+       <friction>
+         <ode>
+           <mu>0.8</mu>
+           <mu2>0.8</mu2>
+           <fdir1>0 0 0</fdir1>
+           <slip1>0</slip1>
+           <slip2>0</slip2>
+         </ode>
+       </friction>
+      <bounce>
+        <restitution_coefficient>0.0</restitution_coefficient>
+        <threshold>100000.0</threshold>
+      </bounce>
+      <contact>
+        <ode>
+          <soft_cfm>0.0</soft_cfm>
+          <soft_erp>0.2</soft_erp>
+          <kp>1000000.0</kp>
+          <kd>1</kd>
+          <max_vel>0.0</max_vel>
+          <min_depth>0.01</min_depth>
+        </ode>
+      </contact>
+     </surface>
+    </collision>
+  </link>
+
+  <gazebo reference="cube33">
+    <material>Gazebo/Black</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <joint name="joint32" type="revolute">
+    <parent link="cube32"/>
+    <child link="cube33"/>
+    <origin rpy="0 0 0" xyz="-0.025 -0.05 -0.025"/>
+    <axis xyz="1 0 0" />
+    <limit effort="50" lower="0" upper="3.14" velocity="0.5"/>
+  </joint>
+
+  <transmission name="3secondJoint">
+    <type>transmission_interface/SimpleTransmission</type>
+
+    <actuator name="motor32">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+
+    <joint name="joint32">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+  <link name="servo32">
+    <inertial>
+      <origin
+        xyz="0 0 0" rpy="0 0 0" />
+      <mass
+        value="0.025" />
+      <inertia
+        ixx="0.0000009375"
+        ixy="0"
+        ixz="0"
+        iyy="0.0000009375"
+        iyz="0"
+        izz="0.0000009375" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "0 0 0"/>
+      <geometry>
+        <box size = "0.015 0.015 0.015"/>
+      </geometry>
+      <material name = "white"/>
+    </visual>
+  </link>
+  <joint name="jointservo32" type="revolute">
+    <parent link="cube33"/>
+    <child link="servo32"/>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <limit effort="0" lower="0.0" upper="0.0" velocity="0"/>
+  </joint>
+  <gazebo reference="servo32">
+    <material>Gazebo/White</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <!--======== Cube 34 =========-->
+  <link name="cube34">
+    <pose> 0 0 0 0 0 0</pose>
+
+    <inertial>
+      <mass value = "0.1" />
+      <origin rpy = "0 0 0" xyz = "-0.025 -0.025 0"/>
+      <inertia
+        ixx="6.023E-05"
+        ixy="0"
+        ixz="0"
+        iyy="7.88E-05"
+        iyz="0"
+        izz="6.023E-05" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "0 -0.05 0.025"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube4.STL" />
+      </geometry>
+      <material name = "green"/>
+    </visual>
+
+    <collision>
+      <origin rpy = "0 0 0" xyz = "0 -0.05 0.025"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube4.STL" />
+      </geometry>
+      <surface>
+       <friction>
+         <ode>
+           <mu>0.8</mu>
+           <mu2>0.8</mu2>
+           <fdir1>0 0 0</fdir1>
+           <slip1>0</slip1>
+           <slip2>0</slip2>
+         </ode>
+       </friction>
+      <bounce>
+        <restitution_coefficient>0.0</restitution_coefficient>
+        <threshold>100000.0</threshold>
+      </bounce>
+      <contact>
+        <ode>
+          <soft_cfm>0.0</soft_cfm>
+          <soft_erp>0.2</soft_erp>
+          <kp>1000000.0</kp>
+          <kd>1</kd>
+          <max_vel>0.0</max_vel>
+          <min_depth>0.01</min_depth>
+        </ode>
+      </contact>
+     </surface>
+    </collision>
+  </link>
+
+  <gazebo reference="cube34">
+    <material>Gazebo/Green</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <joint name="joint33" type="revolute">
+    <parent link="cube33"/>
+    <child link="cube34"/>
+    <origin rpy="0 0 0" xyz="0.025 -0.05 0.025"/>
+    <axis xyz="0 0 1" />
+    <limit effort="50" lower="0" upper="3.14" velocity="0.5"/>
+  </joint>
+
+  <transmission name="3thirdJoint">
+    <type>transmission_interface/SimpleTransmission</type>
+
+    <actuator name="motor33">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+
+    <joint name="joint33">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+  <link name="servo33">
+    <inertial>
+      <origin
+        xyz="0 0 0" rpy="0 0 0" />
+      <mass
+        value="0.025" />
+      <inertia
+        ixx="0.0000009375"
+        ixy="0"
+        ixz="0"
+        iyy="0.0000009375"
+        iyz="0"
+        izz="0.0000009375" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "0 0 0"/>
+      <geometry>
+        <box size = "0.015 0.015 0.015"/>
+      </geometry>
+      <material name = "white"/>
+    </visual>
+  </link>
+  <joint name="jointservo33" type="revolute">
+    <parent link="cube34"/>
+    <child link="servo33"/>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <limit effort="0" lower="0.0" upper="0.0" velocity="0"/>
+  </joint>
+  <gazebo reference="servo33">
+    <material>Gazebo/White</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <!--======== Cube 35 =========-->
+  <link name="cube35">
+    <pose> 0 0 0 0 0 0</pose>
+
+    <inertial>
+      <mass value = "0.1" />
+      <origin rpy = "0 0 0" xyz = "0 -0.025 0.025"/>
+      <inertia
+        ixx="6.023E-05"
+        ixy="0"
+        ixz="0"
+        iyy="7.88E-05"
+        iyz="0"
+        izz="6.023E-05" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "0.025 -0.05 0.05"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube5.STL" />
+      </geometry>
+      <material name = "black"/>
+    </visual>
+
+    <collision>
+      <origin rpy = "0 0 0" xyz = "0.025 -0.05 0.05"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube5.STL" />
+      </geometry>
+      <surface>
+       <friction>
+         <ode>
+           <mu>0.8</mu>
+           <mu2>0.8</mu2>
+           <fdir1>0 0 0</fdir1>
+           <slip1>0</slip1>
+           <slip2>0</slip2>
+         </ode>
+       </friction>
+      <bounce>
+        <restitution_coefficient>0.0</restitution_coefficient>
+        <threshold>100000.0</threshold>
+      </bounce>
+      <contact>
+        <ode>
+          <soft_cfm>0.0</soft_cfm>
+          <soft_erp>0.2</soft_erp>
+          <kp>1000000.0</kp>
+          <kd>1</kd>
+          <max_vel>0.0</max_vel>
+          <min_depth>0.01</min_depth>
+        </ode>
+      </contact>
+     </surface>
+    </collision>
+  </link>
+
+  <gazebo reference="cube35">
+    <material>Gazebo/Black</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <joint name="joint34" type="revolute">
+    <parent link="cube34"/>
+    <child link="cube35"/>
+    <origin rpy="0 0 0" xyz="-0.025 -0.05 -0.025"/>
+    <axis xyz="1 0 0" />
+    <limit effort="50" lower="0" upper="3.14" velocity="0.5"/>
+  </joint>
+
+  <!--======== Cube 36 =========-->
+  <link name="cube36">
+    <pose> 0 0 0 0 0 0</pose>
+
+    <inertial>
+      <mass value = "0.1" />
+      <origin rpy = "0 0 0" xyz = "-0.025 0 0.025"/>
+      <inertia
+        ixx="6.023E-05"
+        ixy="0"
+        ixz="0"
+        iyy="7.88E-05"
+        iyz="0"
+        izz="6.023E-05" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "0.0 -0.025 0.050"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube6.STL" />
+      </geometry>
+      <material name = "green"/>
+    </visual>
+
+    <collision>
+      <origin rpy = "0 0 0" xyz = "0.0 -0.025 0.05"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube6.STL" />
+      </geometry>
+      <surface>
+       <friction>
+         <ode>
+           <mu>0.8</mu>
+           <mu2>0.8</mu2>
+           <fdir1>0 0 0</fdir1>
+           <slip1>0</slip1>
+           <slip2>0</slip2>
+         </ode>
+       </friction>
+      <bounce>
+        <restitution_coefficient>0.0</restitution_coefficient>
+        <threshold>100000.0</threshold>
+      </bounce>
+      <contact>
+        <ode>
+          <soft_cfm>0.0</soft_cfm>
+          <soft_erp>0.2</soft_erp>
+          <kp>1000000.0</kp>
+          <kd>1</kd>
+          <max_vel>0.0</max_vel>
+          <min_depth>0.01</min_depth>
+        </ode>
+      </contact>
+     </surface>
+    </collision>
+  </link>
+
+  <gazebo reference="cube36">
+    <material>Gazebo/Green</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <joint name="joint35" type="revolute">
+    <parent link="cube35"/>
+    <child link="cube36"/>
+    <origin rpy="0 0 0" xyz="0.025 -0.025 0.05"/>
+    <axis xyz="0 1 0" />
+    <limit effort="50" lower="0" upper="3.14" velocity="0.5"/>
+  </joint>
+
+  <!--======== Cube 37 =========-->
+  <link name="cube37">
+    <pose> 0 0 0 0 0 0</pose>
+
+    <inertial>
+      <mass value = "0.1" />
+      <origin rpy = "0 0 0" xyz = "0 0.025 -0.025"/>
+      <inertia
+        ixx="6.023E-05"
+        ixy="0"
+        ixz="0"
+        iyy="7.88E-05"
+        iyz="0"
+        izz="6.023E-05" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "-0.025 0.05 0"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube7.STL" />
+      </geometry>
+      <material name = "black"/>
+    </visual>
+
+    <collision>
+      <origin rpy = "0 0 0" xyz = "-0.025 0.05 0"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube7.STL" />
+      </geometry>
+      <surface>
+       <friction>
+         <ode>
+           <mu>0.8</mu>
+           <mu2>0.8</mu2>
+           <fdir1>0 0 0</fdir1>
+           <slip1>0</slip1>
+           <slip2>0</slip2>
+         </ode>
+       </friction>
+      <bounce>
+        <restitution_coefficient>0.0</restitution_coefficient>
+        <threshold>100000.0</threshold>
+      </bounce>
+      <contact>
+        <ode>
+          <soft_cfm>0.0</soft_cfm>
+          <soft_erp>0.2</soft_erp>
+          <kp>1000000.0</kp>
+          <kd>1</kd>
+          <max_vel>0.0</max_vel>
+          <min_depth>0.01</min_depth>
+        </ode>
+      </contact>
+     </surface>
+    </collision>
+  </link>
+
+  <gazebo reference="cube37">
+    <material>Gazebo/Black</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <joint name="joint36" type="revolute">
+    <parent link="cube36"/>
+    <child link="cube37"/>
+    <origin rpy="0 0 0" xyz="-0.025 0.025 0.05"/>
+    <axis xyz="1 0 0" />
+    <limit effort="50" lower="0" upper="3.14" velocity="0.5"/>
+  </joint>
+
+  <transmission name="3sixthJoint">
+    <type>transmission_interface/SimpleTransmission</type>
+
+    <actuator name="motor36">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+
+    <joint name="joint36">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+  <!--======== Cube 38 =========-->
+  <link name="cube38">
+    <pose> 0 0 0 0 0 0</pose>
+
+    <inertial>
+      <mass value = "0.1" />
+      <origin rpy = "0 0 0" xyz = "-0.025 0.025 0"/>
+      <inertia
+        ixx="6.023E-05"
+        ixy="0"
+        ixz="0"
+        iyy="7.88E-05"
+        iyz="0"
+        izz="6.023E-05" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "-0.05 0.05 0.025"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube8.STL" />
+      </geometry>
+      <material name="green"/>
+    </visual>
+
+    <collision>
+      <origin rpy = "0 0 0" xyz = "-0.05 0.05 0.025"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube8.STL" />
+      </geometry>
+      <surface>
+       <friction>
+         <ode>
+           <mu>0.8</mu>
+           <mu2>0.8</mu2>
+           <fdir1>0 0 0</fdir1>
+           <slip1>0</slip1>
+           <slip2>0</slip2>
+         </ode>
+       </friction>
+      <bounce>
+        <restitution_coefficient>0.0</restitution_coefficient>
+        <threshold>100000.0</threshold>
+      </bounce>
+      <contact>
+        <ode>
+          <soft_cfm>0.0</soft_cfm>
+          <soft_erp>0.2</soft_erp>
+          <kp>1000000.0</kp>
+          <kd>1</kd>
+          <max_vel>0.0</max_vel>
+          <min_depth>0.01</min_depth>
+        </ode>
+      </contact>
+     </surface>
+    </collision>
+  </link>
+
+  <gazebo reference="cube38">
+    <material>Gazebo/Green</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <joint name="joint37" type="revolute">
+    <parent link="cube37"/>
+    <child link="cube38"/>
+    <origin rpy="0 0 0" xyz="0.025 0.05 -0.025"/>
+    <axis xyz="0 0 1" />
+    <limit effort="50" lower="-3.14" upper="0" velocity="0.5"/>
+  </joint>
+
+  <gazebo>
+    <joint name="joint38" type="revolute">
+      <pose relative_to='cube31'>-0.025 -0.025 0.05 0 -0 0</pose>
+      <parent>cube38</parent>
+      <child>cube31</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+      </axis>
+      <limit>
+        <lower>0</lower>
+        <upper>3.14</upper>
+        <effort>50</effort>
+        <velocity>0.5</velocity>
+      </limit>
+    </joint>
+  </gazebo>
+
+  <transmission name="3eighthJoint">
+    <type>transmission_interface/SimpleTransmission</type>
+
+    <actuator name="motor38">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+
+    <joint name="joint38">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+  <!--========================UNIT 4========================>-->
+  <!--======== Cube 41 =========-->
+  <link name="cube41">
+    <pose> 0 0 0 0 0 0</pose>
+
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.025 -0.025 0"/>
+      <mass
+        value="0.1" />
+      <inertia
+        ixx="6.023E-05"
+        ixy="0"
+        ixz="0"
+        iyy="7.88E-05"
+        iyz="0"
+        izz="6.023E-05" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "-0.025 -0.025 0"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube1.STL" />
+      </geometry>
+      <material name = "black"/>
+    </visual>
+
+    <collision>
+      <origin rpy = "0 0 0" xyz = "-0.025 -0.025 0"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube1.STL" />
+      </geometry>
+      <surface>
+       <friction>
+         <ode>
+           <mu>0.8</mu>
+           <mu2>0.8</mu2>
+           <fdir1>0 0 0</fdir1>
+           <slip1>0</slip1>
+           <slip2>0</slip2>
+         </ode>
+       </friction>
+      <bounce>
+        <restitution_coefficient>0.0</restitution_coefficient>
+        <threshold>100000.0</threshold>
+      </bounce>
+      <contact>
+        <ode>
+          <soft_cfm>0.0</soft_cfm>
+          <soft_erp>0.2</soft_erp>
+          <kp>1000000.0</kp>
+          <kd>1</kd>
+          <max_vel>0.0</max_vel>
+          <min_depth>0.01</min_depth>
+        </ode>
+      </contact>
+     </surface>
+    </collision>
+  </link>
+
+  <gazebo reference="cube41">
+    <material>Gazebo/Black</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <joint name="top21" type="revolute">
+    <parent link="cube16"/>
+    <child link="cube41"/>
+    <origin xyz="0 -0.025 0.025" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <limit effort="50" lower="0" upper="3.14" velocity="0.5"/>
+  </joint>
+
+  <transmission name="top21Joint">
+    <type>transmission_interface/SimpleTransmission</type>
+
+    <actuator name="motortop">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+
+    <joint name="top21">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+  <link name="servot2">
+    <inertial>
+      <origin
+        xyz="0 0 0" rpy="0 0 0" />
+      <mass
+        value="0.025" />
+      <inertia
+        ixx="0.0000009375"
+        ixy="0"
+        ixz="0"
+        iyy="0.0000009375"
+        iyz="0"
+        izz="0.0000009375" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "0 0 0"/>
+      <geometry>
+        <box size = "0.015 0.015 0.015"/>
+      </geometry>
+      <material name = "white"/>
+    </visual>
+  </link>
+  <joint name="jointservot2" type="revolute">
+    <parent link="cube41"/>
+    <child link="servot2"/>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <limit effort="0" lower="0.0" upper="0.0" velocity="0"/>
+  </joint>
+  <gazebo reference="servot2">
+    <material>Gazebo/White</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <!--======== Cube 42 =========-->
+  <link name="cube42">
+    <pose> 0 0 0 0 0 0</pose>
+
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.025 0 -0.025"/>
+      <mass
+        value="0.1" />
+      <inertia
+        ixx="6.023E-05"
+        ixy="0"
+        ixz="0"
+        iyy="7.88E-05"
+        iyz="0"
+        izz="6.023E-05" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "-0.05 -0.025 0"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube2.STL" />
+      </geometry>
+      <material name = "magenta"/>
+    </visual>
+
+    <collision>
+      <origin rpy = "0 0 0" xyz = "-0.05 -0.025 0"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube2.STL" />
+      </geometry>
+      <surface>
+       <friction>
+         <ode>
+           <mu>0.8</mu>
+           <mu2>0.8</mu2>
+           <fdir1>0 0 0</fdir1>
+           <slip1>0</slip1>
+           <slip2>0</slip2>
+         </ode>
+       </friction>
+      <bounce>
+        <restitution_coefficient>0.0</restitution_coefficient>
+        <threshold>100000.0</threshold>
+      </bounce>
+      <contact>
+        <ode>
+          <soft_cfm>0.0</soft_cfm>
+          <soft_erp>0.2</soft_erp>
+          <kp>1000000.0</kp>
+          <kd>1</kd>
+          <max_vel>0.0</max_vel>
+          <min_depth>0.01</min_depth>
+        </ode>
+      </contact>
+     </surface>
+    </collision>
+  </link>
+
+  <gazebo reference="cube42">
+    <material>Gazebo/Magenta</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <joint name="joint41" type="revolute">
+    <parent link="cube41"/>
+    <child link="cube42"/>
+    <origin xyz="0 -0.025 -0.025" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <limit effort="50" lower="-3.14" upper="0" velocity="0.5"/>
+  </joint>
+
+  <transmission name="4firstJoint">
+    <type>transmission_interface/SimpleTransmission</type>
+
+    <actuator name="motor41">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+
+    <joint name="joint41">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+  <link name="servo41">
+    <inertial>
+      <origin
+        xyz="0 0 0" rpy="0 0 0" />
+      <mass
+        value="0.025" />
+      <inertia
+        ixx="0.0000009375"
+        ixy="0"
+        ixz="0"
+        iyy="0.0000009375"
+        iyz="0"
+        izz="0.0000009375" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "0 0 0"/>
+      <geometry>
+        <box size = "0.015 0.015 0.015"/>
+      </geometry>
+      <material name = "white"/>
+    </visual>
+  </link>
+  <joint name="jointservo41" type="revolute">
+    <parent link="cube42"/>
+    <child link="servo41"/>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <limit effort="0" lower="0.0" upper="0.0" velocity="0"/>
+  </joint>
+  <gazebo reference="servo41">
+    <material>Gazebo/White</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <!--======== Cube 43 =========-->
+  <link name="cube43">
+    <pose> 0 0 0 0 0 0</pose>
+
+    <inertial>
+      <mass value = "0.1" />
+      <origin rpy = "0 0 0" xyz = "0 -0.025 0.025"/>
+      <inertia
+        ixx="6.023E-05"
+        ixy="0"
+        ixz="0"
+        iyy="7.88E-05"
+        iyz="0"
+        izz="6.023E-05" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "0.025 -0.05 0.05"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube3.STL" />
+      </geometry>
+      <material name = "black"/>
+    </visual>
+
+    <collision>
+      <origin rpy = "0 0 0" xyz = "0.025 -0.05 0.05"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube3.STL" />
+      </geometry>
+      <surface>
+       <friction>
+         <ode>
+           <mu>0.8</mu>
+           <mu2>0.8</mu2>
+           <fdir1>0 0 0</fdir1>
+           <slip1>0</slip1>
+           <slip2>0</slip2>
+         </ode>
+       </friction>
+      <bounce>
+        <restitution_coefficient>0.0</restitution_coefficient>
+        <threshold>100000.0</threshold>
+      </bounce>
+      <contact>
+        <ode>
+          <soft_cfm>0.0</soft_cfm>
+          <soft_erp>0.2</soft_erp>
+          <kp>1000000.0</kp>
+          <kd>1</kd>
+          <max_vel>0.0</max_vel>
+          <min_depth>0.01</min_depth>
+        </ode>
+      </contact>
+     </surface>
+    </collision>
+  </link>
+
+  <gazebo reference="cube43">
+    <material>Gazebo/Black</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <joint name="joint42" type="revolute">
+    <parent link="cube42"/>
+    <child link="cube43"/>
+    <origin rpy="0 0 0" xyz="-0.025 -0.025 -0.05"/>
+    <axis xyz="1 0 0" />
+    <limit effort="50" lower="0" upper="3.14" velocity="0.5"/>
+  </joint>
+
+  <link name="servo38">
+    <inertial>
+      <origin
+        xyz="0 0 0" rpy="0 0 0" />
+      <mass
+        value="0.025" />
+      <inertia
+        ixx="0.0000009375"
+        ixy="0"
+        ixz="0"
+        iyy="0.0000009375"
+        iyz="0"
+        izz="0.0000009375" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "0 0 0"/>
+      <geometry>
+        <box size = "0.015 0.015 0.015"/>
+      </geometry>
+      <material name = "white"/>
+    </visual>
+  </link>
+  <joint name="jointservo38" type="revolute">
+    <parent link="cube38"/>
+    <child link="servo38"/>
+    <origin xyz="-0.025 0.05 0.025" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <limit effort="0" lower="0.0" upper="0.0" velocity="0"/>
+  </joint>
+  <gazebo reference="servo38">
+    <material>Gazebo/White</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <!--======== Cube 44 =========-->
+  <link name="cube44">
+    <pose> 0 0 0 0 0 0</pose>
+
+    <inertial>
+      <mass value = "0.1" />
+      <origin rpy = "0 0 0" xyz = "-0.025 -0.025 0"/>
+      <inertia
+        ixx="6.023E-05"
+        ixy="0"
+        ixz="0"
+        iyy="7.88E-05"
+        iyz="0"
+        izz="6.023E-05" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "0 -0.05 0.025"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube4.STL" />
+      </geometry>
+      <material name = "magenta"/>
+    </visual>
+
+    <collision>
+      <origin rpy = "0 0 0" xyz = "0 -0.05 0.025"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube4.STL" />
+      </geometry>
+      <surface>
+       <friction>
+         <ode>
+           <mu>0.8</mu>
+           <mu2>0.8</mu2>
+           <fdir1>0 0 0</fdir1>
+           <slip1>0</slip1>
+           <slip2>0</slip2>
+         </ode>
+       </friction>
+      <bounce>
+        <restitution_coefficient>0.0</restitution_coefficient>
+        <threshold>100000.0</threshold>
+      </bounce>
+      <contact>
+        <ode>
+          <soft_cfm>0.0</soft_cfm>
+          <soft_erp>0.2</soft_erp>
+          <kp>1000000.0</kp>
+          <kd>1</kd>
+          <max_vel>0.0</max_vel>
+          <min_depth>0.01</min_depth>
+        </ode>
+      </contact>
+     </surface>
+    </collision>
+  </link>
+
+  <gazebo reference="cube44">
+    <material>Gazebo/Magenta</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <joint name="joint43" type="revolute">
+    <parent link="cube43"/>
+    <child link="cube44"/>
+    <origin rpy="0 0 0" xyz="0.025 -0.05 0.025"/>
+    <axis xyz="0 0 1" />
+    <limit effort="50" lower="0" upper="3.14" velocity="0.5"/>
+  </joint>
+
+  <transmission name="4thirdJoint">
+    <type>transmission_interface/SimpleTransmission</type>
+
+    <actuator name="motor43">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+
+    <joint name="joint43">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+  <link name="servo43">
+    <inertial>
+      <origin
+        xyz="0 0 0" rpy="0 0 0" />
+      <mass
+        value="0.025" />
+      <inertia
+        ixx="0.0000009375"
+        ixy="0"
+        ixz="0"
+        iyy="0.0000009375"
+        iyz="0"
+        izz="0.0000009375" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "0 0 0"/>
+      <geometry>
+        <box size = "0.015 0.015 0.015"/>
+      </geometry>
+      <material name = "white"/>
+    </visual>
+  </link>
+  <joint name="jointservo43" type="revolute">
+    <parent link="cube44"/>
+    <child link="servo43"/>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <limit effort="0" lower="0.0" upper="0.0" velocity="0"/>
+  </joint>
+  <gazebo reference="servo43">
+    <material>Gazebo/White</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <!--======== Cube 45 =========-->
+  <link name="cube45">
+    <pose> 0 0 0 0 0 0</pose>
+
+    <inertial>
+      <mass value = "0.1" />
+      <origin rpy = "0 0 0" xyz = "0 -0.025 0.025"/>
+      <inertia
+        ixx="6.023E-05"
+        ixy="0"
+        ixz="0"
+        iyy="7.88E-05"
+        iyz="0"
+        izz="6.023E-05" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "0.025 -0.05 0.05"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube5.STL" />
+      </geometry>
+      <material name = "black"/>
+    </visual>
+
+    <collision>
+      <origin rpy = "0 0 0" xyz = "0.025 -0.05 0.05"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube5.STL" />
+      </geometry>
+      <surface>
+       <friction>
+         <ode>
+           <mu>0.8</mu>
+           <mu2>0.8</mu2>
+           <fdir1>0 0 0</fdir1>
+           <slip1>0</slip1>
+           <slip2>0</slip2>
+         </ode>
+       </friction>
+      <bounce>
+        <restitution_coefficient>0.0</restitution_coefficient>
+        <threshold>100000.0</threshold>
+      </bounce>
+      <contact>
+        <ode>
+          <soft_cfm>0.0</soft_cfm>
+          <soft_erp>0.2</soft_erp>
+          <kp>1000000.0</kp>
+          <kd>1</kd>
+          <max_vel>0.0</max_vel>
+          <min_depth>0.01</min_depth>
+        </ode>
+      </contact>
+     </surface>
+    </collision>
+  </link>
+
+  <gazebo reference="cube45">
+    <material>Gazebo/Black</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <joint name="joint44" type="revolute">
+    <parent link="cube44"/>
+    <child link="cube45"/>
+    <origin rpy="0 0 0" xyz="-0.025 -0.05 -0.025"/>
+    <axis xyz="1 0 0" />
+    <limit effort="50" lower="0" upper="3.14" velocity="0.5"/>
+  </joint>
+
+  <link name="servo36">
+    <inertial>
+      <origin
+        xyz="0 0 0" rpy="0 0 0" />
+      <mass
+        value="0.025" />
+      <inertia
+        ixx="0.0000009375"
+        ixy="0"
+        ixz="0"
+        iyy="0.0000009375"
+        iyz="0"
+        izz="0.0000009375" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "0 0 0"/>
+      <geometry>
+        <box size = "0.015 0.015 0.015"/>
+      </geometry>
+      <material name = "white"/>
+    </visual>
+  </link>
+  <joint name="jointservo36" type="revolute">
+    <parent link="cube45"/>
+    <child link="servo36"/>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <limit effort="0" lower="0.0" upper="0.0" velocity="0"/>
+  </joint>
+  <gazebo reference="servo36">
+    <material>Gazebo/White</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <!--======== Cube 46 =========-->
+  <link name="cube46">
+    <pose> 0 0 0 0 0 0</pose>
+
+    <inertial>
+      <mass value = "0.1" />
+      <origin rpy = "0 0 0" xyz = "-0.025 0 0.025"/>
+      <inertia
+        ixx="6.023E-05"
+        ixy="0"
+        ixz="0"
+        iyy="7.88E-05"
+        iyz="0"
+        izz="6.023E-05" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "0.0 -0.025 0.050"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube6.STL" />
+      </geometry>
+      <material name = "magenta"/>
+    </visual>
+
+    <collision>
+      <origin rpy = "0 0 0" xyz = "0.0 -0.025 0.05"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube6.STL" />
+      </geometry>
+      <surface>
+       <friction>
+         <ode>
+           <mu>0.8</mu>
+           <mu2>0.8</mu2>
+           <fdir1>0 0 0</fdir1>
+           <slip1>0</slip1>
+           <slip2>0</slip2>
+         </ode>
+       </friction>
+      <bounce>
+        <restitution_coefficient>0.0</restitution_coefficient>
+        <threshold>100000.0</threshold>
+      </bounce>
+      <contact>
+        <ode>
+          <soft_cfm>0.0</soft_cfm>
+          <soft_erp>0.2</soft_erp>
+          <kp>1000000.0</kp>
+          <kd>1</kd>
+          <max_vel>0.0</max_vel>
+          <min_depth>0.01</min_depth>
+        </ode>
+      </contact>
+     </surface>
+    </collision>
+  </link>
+
+  <gazebo reference="cube46">
+    <material>Gazebo/Magenta</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <joint name="joint45" type="revolute">
+    <parent link="cube45"/>
+    <child link="cube46"/>
+    <origin rpy="0 0 0" xyz="0.025 -0.025 0.05"/>
+    <axis xyz="0 1 0" />
+    <limit effort="50" lower="0" upper="3.14" velocity="0.5"/>
+
+  </joint>
+
+  <!--======== Cube 47 =========-->
+  <link name="cube47">
+    <pose> 0 0 0 0 0 0</pose>
+
+    <inertial>
+      <mass value = "0.1" />
+      <origin rpy = "0 0 0" xyz = "0 0.025 -0.025"/>
+      <inertia
+        ixx="6.023E-05"
+        ixy="0"
+        ixz="0"
+        iyy="7.88E-05"
+        iyz="0"
+        izz="6.023E-05" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "-0.025 0.05 0"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube7.STL" />
+      </geometry>
+      <material name = "black"/>
+    </visual>
+
+    <collision>
+      <origin rpy = "0 0 0" xyz = "-0.025 0.05 0"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube7.STL" />
+      </geometry>
+      <surface>
+       <friction>
+         <ode>
+           <mu>0.8</mu>
+           <mu2>0.8</mu2>
+           <fdir1>0 0 0</fdir1>
+           <slip1>0</slip1>
+           <slip2>0</slip2>
+         </ode>
+       </friction>
+      <bounce>
+        <restitution_coefficient>0.0</restitution_coefficient>
+        <threshold>100000.0</threshold>
+      </bounce>
+      <contact>
+        <ode>
+          <soft_cfm>0.0</soft_cfm>
+          <soft_erp>0.2</soft_erp>
+          <kp>1000000.0</kp>
+          <kd>1</kd>
+          <max_vel>0.0</max_vel>
+          <min_depth>0.01</min_depth>
+        </ode>
+      </contact>
+     </surface>
+    </collision>
+  </link>
+
+  <gazebo reference="cube47">
+    <material>Gazebo/Black</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <joint name="joint46" type="revolute">
+    <parent link="cube46"/>
+    <child link="cube47"/>
+    <origin rpy="0 0 0" xyz="-0.025 0.025 0.05"/>
+    <axis xyz="1 0 0" />
+    <limit effort="50" lower="0" upper="3.14" velocity="0.5"/>
+  </joint>
+
+  <transmission name="4sixthJoint">
+    <type>transmission_interface/SimpleTransmission</type>
+
+    <actuator name="motor46">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+
+    <joint name="joint46">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+  <link name="servo46">
+    <inertial>
+      <origin
+        xyz="0 0 0" rpy="0 0 0" />
+      <mass
+        value="0.025" />
+      <inertia
+        ixx="0.0000009375"
+        ixy="0"
+        ixz="0"
+        iyy="0.0000009375"
+        iyz="0"
+        izz="0.0000009375" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "0 0 0"/>
+      <geometry>
+        <box size = "0.015 0.015 0.015"/>
+      </geometry>
+      <material name = "white"/>
+    </visual>
+  </link>
+  <joint name="jointservo46" type="revolute">
+    <parent link="cube47"/>
+    <child link="servo46"/>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <limit effort="0" lower="0.0" upper="0.0" velocity="0"/>
+  </joint>
+  <gazebo reference="servo46">
+    <material>Gazebo/White</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <!--======== Cube 48 =========-->
+  <link name="cube48">
+    <pose> 0 0 0 0 0 0</pose>
+
+    <inertial>
+      <mass value = "0.1" />
+      <origin rpy = "0 0 0" xyz = "-0.025 0.025 0"/>
+      <inertia
+        ixx="6.023E-05"
+        ixy="0"
+        ixz="0"
+        iyy="7.88E-05"
+        iyz="0"
+        izz="6.023E-05" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "-0.05 0.05 0.025"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube8.STL" />
+      </geometry>
+      <material name="magenta"/>
+    </visual>
+
+    <collision>
+      <origin rpy = "0 0 0" xyz = "-0.05 0.05 0.025"/>
+      <geometry>
+        <mesh filename="package://foldable_robot/meshes/cube8.STL" />
+      </geometry>
+      <surface>
+       <friction>
+         <ode>
+           <mu>0.8</mu>
+           <mu2>0.8</mu2>
+           <fdir1>0 0 0</fdir1>
+           <slip1>0</slip1>
+           <slip2>0</slip2>
+         </ode>
+       </friction>
+      <bounce>
+        <restitution_coefficient>0.0</restitution_coefficient>
+        <threshold>100000.0</threshold>
+      </bounce>
+      <contact>
+        <ode>
+          <soft_cfm>0.0</soft_cfm>
+          <soft_erp>0.2</soft_erp>
+          <kp>1000000.0</kp>
+          <kd>1</kd>
+          <max_vel>0.0</max_vel>
+          <min_depth>0.01</min_depth>
+        </ode>
+      </contact>
+     </surface>
+    </collision>
+  </link>
+
+  <gazebo reference="cube48">
+    <material>Gazebo/Magenta</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <joint name="joint47" type="revolute">
+    <parent link="cube47"/>
+    <child link="cube48"/>
+    <origin rpy="0 0 0" xyz="0.025 0.05 -0.025"/>
+    <axis xyz="0 0 1" />
+    <limit effort="50" lower="-3.14" upper="0" velocity="0.5"/>
+  </joint>
+
+  <gazebo>
+    <joint name="joint48" type="revolute">
+      <pose relative_to='cube41'>-0.025 -0.05 0.025 0 -0 0</pose>
+      <parent>cube41</parent>
+      <child>cube48</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+      </axis>
+      <limit>
+        <lower>-3.14</lower>
+        <upper>0</upper>
+        <effort>50</effort>
+        <velocity>0.5</velocity>
+      </limit>
+    </joint>
+  </gazebo>
+
+  <transmission name="4eighthJoint">
+    <type>transmission_interface/SimpleTransmission</type>
+
+    <actuator name="motor48">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+
+    <joint name="joint48">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+  <gazebo>
+    <joint name="bottom11prime" type="revolute">
+      <pose relative_to='cube36'>-0.05 0 0.05 0 -0 0</pose>
+      <parent>cube36</parent>
+      <child>cube45</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+      </axis>
+      <limit>
+        <lower>-3.14</lower>
+        <upper>0</upper>
+        <effort>50</effort>
+        <velocity>0.5</velocity>
+      </limit>
+    </joint>
+  </gazebo>
+
+
+  <transmission name="bottom11primeJoint">
+    <type>transmission_interface/SimpleTransmission</type>
+
+    <actuator name="motorbottomprime">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+
+    <joint name="bottom11prime">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+  <link name="servo48">
+    <inertial>
+      <origin
+        xyz="0 0 0" rpy="0 0 0" />
+      <mass
+        value="0.025" />
+      <inertia
+        ixx="0.0000009375"
+        ixy="0"
+        ixz="0"
+        iyy="0.0000009375"
+        iyz="0"
+        izz="0.0000009375" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "0 0 0"/>
+      <geometry>
+        <box size = "0.015 0.015 0.015"/>
+      </geometry>
+      <material name = "white"/>
+    </visual>
+  </link>
+  <joint name="jointservo48" type="revolute">
+    <parent link="cube48"/>
+    <child link="servo48"/>
+    <origin xyz="-0.025 0.05 0.025" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <limit effort="0" lower="0.0" upper="0.0" velocity="0"/>
+  </joint>
+  <gazebo reference="servo48">
+    <material>Gazebo/White</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+
+  <link name="servob2">
+    <inertial>
+      <origin
+        xyz="0 0 0" rpy="0 0 0" />
+      <mass
+        value="0.025" />
+      <inertia
+        ixx="0.0000009375"
+        ixy="0"
+        ixz="0"
+        iyy="0.0000009375"
+        iyz="0"
+        izz="0.0000009375" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "0 0 0"/>
+      <geometry>
+        <box size = "0.015 0.015 0.015"/>
+      </geometry>
+      <material name = "white"/>
+    </visual>
+  </link>
+  <joint name="jointservob2" type="revolute">
+    <parent link="cube36"/>
+    <child link="servob2"/>
+    <origin xyz="-0.05 0 0.05" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <limit effort="0" lower="0.0" upper="0.0" velocity="0"/>
+  </joint>
+  <gazebo reference="servob2">
+    <material>Gazebo/White</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+  <!--
+  <link name="addedWeight1">
+    <inertial>
+      <origin
+        xyz="0 0 0" rpy="0 0 0" />
+      <mass
+        value="0.05" />
+      <inertia
+        ixx="0.000001875"
+        ixy="0"
+        ixz="0"
+        iyy="0.000001875"
+        iyz="0"
+        izz="0.000001875" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "0 0 0"/>
+      <geometry>
+        <box size = "0.015 0.015 0.015"/>
+      </geometry>
+      <material name = "white"/>
+    </visual>
+  </link>
+  <joint name="jaddedWeight1" type="revolute">
+    <parent link="servob1"/>
+    <child link="addedWeight1"/>
+    <origin xyz="0.05 -0.025 0" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <limit effort="0" lower="0.0" upper="0.0" velocity="0"/>
+  </joint>
+  <gazebo reference="addedWeight1">
+    <material>Gazebo/White</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+-->
+<!--
+  <link name="addedWeight2">
+    <inertial>
+      <origin
+        xyz="0 0 0" rpy="0 0 0" />
+      <mass
+        value="0.05" />
+      <inertia
+        ixx="0.000001875"
+        ixy="0"
+        ixz="0"
+        iyy="0.000001875"
+        iyz="0"
+        izz="0.000001875" />
+    </inertial>
+
+    <visual>
+      <origin rpy = "0 0 0" xyz = "0 0 0"/>
+      <geometry>
+        <box size = "0.015 0.015 0.015"/>
+      </geometry>
+      <material name = "white"/>
+    </visual>
+  </link>
+  <joint name="jaddedWeight2" type="revolute">
+    <parent link="servob2"/>
+    <child link="addedWeight2"/>
+    <origin xyz="0.05 0.025 0" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <limit effort="0" lower="0.0" upper="0.0" velocity="0"/>
+  </joint>
+  <gazebo reference="addedWeight2">
+    <material>Gazebo/White</material>
+    <turnGravityOff>false</turnGravityOff>
+    <self_collide>0</self_collide>
+  </gazebo>
+-->
+  <!-- ROS Control plugin for Gazebo -->
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <!-- <robotNamespace>/foldable_robot</robotNamespace> -->
+    </plugin>
+  </gazebo>
+</robot>
