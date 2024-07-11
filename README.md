@@ -1,4 +1,4 @@
-# TransformerRobot
+# Transformer_Robot
 
 This repository includes code for controlling and simulating the transformer robot.
 
